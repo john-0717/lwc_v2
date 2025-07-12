@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Cross, Users, MessageCircle, Heart, BookOpen, User, ChevronDown, Settings, LogOut, Shield } from 'lucide-react';
+import { Cross, Users, MessageCircle, Heart, BookOpen, User, ChevronDown, Settings, LogOut, Shield, Trophy, BarChart3, FileText } from 'lucide-react';
 import type { Section } from '../App';
 
 interface HeaderProps {
@@ -18,10 +18,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection, isAdmi
     { id: 'community' as Section, label: 'Community', icon: Users },
     { id: 'discussions' as Section, label: 'Discussions', icon: MessageCircle },
     { id: 'prayer' as Section, label: 'Prayer', icon: Heart },
-    { id: 'resources' as Section, label: 'Resources', icon: BookOpen },
-    { id: 'exams' as Section, label: 'Exams', icon: BookOpen },
-    { id: 'leaderboard' as Section, label: 'Leaderboard', icon: Users },
-    { id: 'results' as Section, label: 'Results', icon: BookOpen },
+    { id: 'resources' as Section, label: 'Resources', icon: BookOpen }
   ];
 
   useEffect(() => {
@@ -108,6 +105,43 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection, isAdmi
                       Profile
                     </button>
                     
+                    <hr className="my-2" />
+                    
+                    <button
+                      onClick={() => {
+                        setActiveSection('exams');
+                        setShowProfileDropdown(false);
+                      }}
+                      className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center"
+                    >
+                      <BookOpen className="h-4 w-4 mr-3" />
+                      Exams
+                    </button>
+                    
+                    <button
+                      onClick={() => {
+                        setActiveSection('leaderboard');
+                        setShowProfileDropdown(false);
+                      }}
+                      className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center"
+                    >
+                      <Trophy className="h-4 w-4 mr-3" />
+                      Leaderboard
+                    </button>
+                    
+                    <button
+                      onClick={() => {
+                        setActiveSection('results');
+                        setShowProfileDropdown(false);
+                      }}
+                      className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center"
+                    >
+                      <BarChart3 className="h-4 w-4 mr-3" />
+                      Results
+                    </button>
+                    
+                    <hr className="my-2" />
+                    
                     {isAdmin && (
                       <button
                         onClick={handleAdminClick}
@@ -167,6 +201,43 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection, isAdmi
                 </button>
               )}
               
+              <hr className="my-2" />
+              
+              <button
+                onClick={() => {
+                  setActiveSection('exams');
+                  setShowProfileDropdown(false);
+                }}
+                className="w-full text-left px-4 py-3 text-gray-700 hover:bg-gray-100 flex items-center"
+              >
+                <BookOpen className="h-5 w-5 mr-3" />
+                Exams
+              </button>
+              
+              <button
+                onClick={() => {
+                  setActiveSection('leaderboard');
+                  setShowProfileDropdown(false);
+                }}
+                className="w-full text-left px-4 py-3 text-gray-700 hover:bg-gray-100 flex items-center"
+              >
+                <Trophy className="h-5 w-5 mr-3" />
+                Leaderboard
+              </button>
+              
+              <button
+                onClick={() => {
+                  setActiveSection('results');
+                  setShowProfileDropdown(false);
+                }}
+                className="w-full text-left px-4 py-3 text-gray-700 hover:bg-gray-100 flex items-center"
+              >
+                <BarChart3 className="h-5 w-5 mr-3" />
+                Results
+              </button>
+              
+              <hr className="my-2" />
+              
               <button
                 onClick={() => setShowProfileDropdown(false)}
                 className="w-full text-left px-4 py-3 text-gray-700 hover:bg-gray-100 flex items-center"
@@ -202,7 +273,13 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection, isAdmi
                 }`}
               >
                 <Icon className="h-5 w-5" />
-                <span className="text-xs mt-1 font-medium">{id === 'home' ? 'Home' : id === 'community' ? 'Community' : id === 'discussions' ? 'Discuss' : id === 'prayer' ? 'Prayer' : 'Resources'}</span>
+                <span className="text-xs mt-1 font-medium">
+                  {id === 'home' ? 'Home' : 
+                   id === 'community' ? 'Community' : 
+                   id === 'discussions' ? 'Discuss' : 
+                   id === 'prayer' ? 'Prayer' : 
+                   'Resources'}
+                </span>
               </button>
             ))}
             
@@ -210,7 +287,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection, isAdmi
             <button
               onClick={() => setShowProfileDropdown(!showProfileDropdown)}
               className={`flex flex-col items-center p-3 rounded-lg transition-all duration-200 ${
-                activeSection === 'profile' || activeSection === 'admin' || showProfileDropdown
+                activeSection === 'profile' || activeSection === 'admin' || activeSection === 'exams' || activeSection === 'leaderboard' || activeSection === 'results' || showProfileDropdown
                   ? 'bg-blue-600 text-white shadow-lg'
                   : 'text-blue-600 hover:bg-blue-50'
               }`}

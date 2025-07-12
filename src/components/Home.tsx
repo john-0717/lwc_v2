@@ -3,9 +3,32 @@ import { Heart, Users, MessageCircle, BookOpen, Star, Calendar, ArrowRight } fro
 
 interface HomeProps {
   onLearnMore: () => void;
+  onViewAnswers?: (userId: number, examId: number) => void;
 }
 
-const Home: React.FC<HomeProps> = ({ onLearnMore }) => {
+const Home: React.FC<HomeProps> = ({ onLearnMore, onViewAnswers }) => {
+  // Top 10 exam rankers data
+  const topRankers = [
+    { id: 1, name: 'Sarah Johnson', score: 96, examId: 1, rank: 1 },
+    { id: 2, name: 'Michael Chen', score: 94, examId: 1, rank: 2 },
+    { id: 3, name: 'Emily Davis', score: 91, examId: 1, rank: 3 },
+    { id: 4, name: 'David Wilson', score: 89, examId: 1, rank: 4 },
+    { id: 5, name: 'Rachel Martinez', score: 87, examId: 1, rank: 5 },
+    { id: 6, name: 'John Smith', score: 85, examId: 1, rank: 6 },
+    { id: 7, name: 'Lisa Brown', score: 84, examId: 1, rank: 7 },
+    { id: 8, name: 'Mark Johnson', score: 82, examId: 1, rank: 8 },
+    { id: 9, name: 'Jennifer Lee', score: 81, examId: 1, rank: 9 },
+    { id: 10, name: 'Robert Garcia', score: 80, examId: 1, rank: 10 }
+  ];
+
+  const getRankColor = (rank: number) => {
+    switch (rank) {
+      case 1: return 'text-yellow-600 bg-yellow-100';
+      case 2: return 'text-gray-600 bg-gray-100';
+      case 3: return 'text-amber-600 bg-amber-100';
+      default: return 'text-blue-600 bg-blue-100';
+    }
+  };
   const features = [
     {
       icon: Users,
@@ -158,6 +181,56 @@ const Home: React.FC<HomeProps> = ({ onLearnMore }) => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Top 10 Exam Rankers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+              Top Exam Performers
+            </h2>
+            <p className="text-xl text-gray-600">
+              Celebrating our community's dedication to spiritual learning
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {topRankers.map((ranker) => (
+              <div
+                key={ranker.id}
+                onClick={() => onViewAnswers && onViewAnswers(ranker.id, ranker.examId)}
+                className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+              >
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <User className="h-8 w-8 text-white" />
+                  </div>
+                  
+                  <div className="mb-3">
+                    <span className={`px-3 py-1 rounded-full text-sm font-bold ${getRankColor(ranker.rank)}`}>
+                      #{ranker.rank}
+                    </span>
+                  </div>
+                  
+                  <h3 className="text-lg font-bold text-gray-800 mb-2">{ranker.name}</h3>
+                  <p className="text-2xl font-bold text-blue-600 mb-2">{ranker.score}%</p>
+                  <p className="text-sm text-gray-600">Biblical Knowledge</p>
+                  
+                  <button className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200 text-sm">
+                    View Answers
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-8">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-200">
+              View Full Leaderboard
+            </button>
           </div>
         </div>
       </section>

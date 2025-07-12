@@ -9,17 +9,61 @@ import Footer from './components/Footer';
 import UserProfile from './components/UserProfile';
 import AdminDashboard from './components/admin/AdminDashboard';
 import LearnMore from './components/LearnMore';
+import Exams from './components/Exams';
+import Leaderboard from './components/Leaderboard';
+import Results from './components/Results';
+import ExamTaking from './components/ExamTaking';
 
-export type Section = 'home' | 'community' | 'discussions' | 'prayer' | 'resources' | 'profile' | 'learn-more' | 'admin';
+export type Section = 'home' | 'community' | 'discussions' | 'prayer' | 'resources' | 'profile' | 'learn-more' | 'admin' | 'exams' | 'leaderboard' | 'results';
 
 function App() {
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [isAdmin, setIsAdmin] = useState(true);
+  const [selectedExamId, setSelectedExamId] = useState<number | null>(null);
+  const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
+  const [isExamTaking, setIsExamTaking] = useState(false);
 
+  const handleViewAnswers = (userId: number, examId: number) => {
+    setSelectedUserId(userId);
+    setSelectedExamId(examId);
+    setActiveSection('results');
+  };
+
+  const handleStartExam = (examId: number, examTitle: string, duration: number) => {
+    setSelectedExamId(examId);
+    setIsExamTaking(true);
+  };
+
+  const handleCompleteExam = (answers: { [key: number]: string }) => {
+    // Handle exam completion logic here
+    console.log('Exam completed with answers:', answers);
+    setIsExamTaking(false);
+    setActiveSection('results');
+  };
+
+  const handleExitExam = () => {
+    setIsExamTaking(false);
+    setActiveSection('exams');
+  };
   const renderSection = () => {
+    if (isExamTaking && selectedExamId) {
+      return (
+        <ExamTaking
+          examId={selectedExamId}
+          examTitle="Biblical Knowledge Assessment"
+          duration={120}
+          onComplete={handleCompleteExam}
+          onExit={handleExitExam}
+        />
+      );
+    }
+
     switch (activeSection) {
       case 'home':
-        return <Home onLearnMore={() => setActiveSection('learn-more')} />;
+        return <Home 
+          onLearnMore={() => setActiveSection('learn-more')} 
+          onViewAnswers={handleViewAnswers}
+        />;
       case 'community':
         return <Community />;
       case 'discussions':
@@ -34,8 +78,17 @@ function App() {
         return <LearnMore />;
       case 'admin':
         return <AdminDashboard />;
+      case 'exams':
+        return <Exams />;
+      case 'leaderboard':
+        return <Leaderboard onViewAnswers={handleViewAnswers} />;
+      case 'results':
+        return <Results selectedExamId={selectedExamId || undefined} selectedUserId={selectedUserId || undefined} />;
       default:
-        return <Home onLearnMore={() => setActiveSection('learn-more')} />;
+        return <Home 
+          onLearnMore={() => setActiveSection('learn-more')} 
+          onViewAnswers={handleViewAnswers}
+        />;
     }
   };
 
@@ -46,10 +99,10 @@ function App() {
       setActiveSection={setActiveSection} 
       isAdmin={isAdmin}
       setIsAdmin={setIsAdmin} />
-      <main className="transition-all duration-500 ease-in-out">
+      <main className={`transition-all duration-500 ease-in-out ${isExamTaking ? 'pt-0' : ''}`}>
         {renderSection()}
       </main>
-      <Footer />
+      {!isExamTaking && <Footer />}
     </div>
   );
 }

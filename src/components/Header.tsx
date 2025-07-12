@@ -19,6 +19,9 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection, isAdmi
     { id: 'discussions' as Section, label: 'Discussions', icon: MessageCircle },
     { id: 'prayer' as Section, label: 'Prayer', icon: Heart },
     { id: 'resources' as Section, label: 'Resources', icon: BookOpen },
+    { id: 'exams' as Section, label: 'Exams', icon: BookOpen },
+    { id: 'leaderboard' as Section, label: 'Leaderboard', icon: Users },
+    { id: 'results' as Section, label: 'Results', icon: BookOpen },
   ];
 
   useEffect(() => {

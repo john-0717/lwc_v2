@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Users, MessageCircle, BookOpen, Star, Calendar, ArrowRight } from 'lucide-react';
+import { Heart, Users, MessageCircle, BookOpen, Star, Calendar, ArrowRight, User } from 'lucide-react';
 
 interface HomeProps {
   onLearnMore: () => void;

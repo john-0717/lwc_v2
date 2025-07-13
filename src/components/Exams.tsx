@@ -10,7 +10,9 @@ import {
   AlertCircle,
   FileText,
   Award,
-  Target
+  Target,
+  X,
+  Lock
 } from 'lucide-react';
 
 interface Exam {
@@ -26,6 +28,7 @@ interface Exam {
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   isCompleted?: boolean;
   score?: number;
+  isInProgress?: boolean;
 }
 
 interface Question {
@@ -38,8 +41,10 @@ interface Question {
 
 const Exams: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [showInstructions, setShowInstructions] = useState(false);
   const [selectedExam, setSelectedExam] = useState<Exam | null>(null);
-  const [showExamDetails, setShowExamDetails] = useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [currentExamInProgress, setCurrentExamInProgress] = useState<number | null>(1); // Simulate exam 1 in progress
 
   const exams: Exam[] = [
     {
@@ -53,7 +58,8 @@ const Exams: React.FC = () => {
       status: 'active',
       category: 'Bible Study',
       difficulty: 'intermediate',
-      isCompleted: false
+      isCompleted: false,
+      isInProgress: true
     },
     {
       id: 2,
@@ -65,7 +71,8 @@ const Exams: React.FC = () => {
       participants: 28,
       status: 'upcoming',
       category: 'Leadership',
-      difficulty: 'advanced'
+      difficulty: 'advanced',
+      isInProgress: false
     },
     {
       id: 3,
@@ -79,7 +86,8 @@ const Exams: React.FC = () => {
       category: 'Faith & Growth',
       difficulty: 'beginner',
       isCompleted: true,
-      score: 85
+      score: 85,
+      isInProgress: false
     },
     {
       id: 4,
@@ -91,7 +99,8 @@ const Exams: React.FC = () => {
       participants: 32,
       status: 'upcoming',
       category: 'Prayer Life',
-      difficulty: 'intermediate'
+      difficulty: 'intermediate',
+      isInProgress: false
     }
   ];
 
@@ -139,7 +148,21 @@ const Exams: React.FC = () => {
 
   const handleStartExam = (exam: Exam) => {
     setSelectedExam(exam);
-    setShowExamDetails(true);
+    setShowInstructions(true);
+    setAgreedToTerms(false);
+  };
+
+  const handleContinueExam = () => {
+    if (selectedExam && agreedToTerms) {
+      setCurrentExamInProgress(selectedExam.id);
+      setShowInstructions(false);
+      // Here you would navigate to the exam taking component
+      console.log('Starting exam:', selectedExam.title);
+    }
+  };
+
+  const isExamDisabled = (exam: Exam) => {
+    return currentExamInProgress !== null && currentExamInProgress !== exam.id && !exam.isCompleted;
   };
 
   return (
@@ -228,12 +251,21 @@ const Exams: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredExams.map((exam) => {
             const daysLeft = getDaysUntilDeadline(exam.deadline);
+            const disabled = isExamDisabled(exam);
             
             return (
               <div
                 key={exam.id}
-                className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 border border-gray-100"
+                className={`bg-white rounded-xl shadow-lg p-6 transition-all duration-300 border border-gray-100 ${
+                  disabled ? 'opacity-50' : 'hover:shadow-xl'
+                }`}
               >
+                {disabled && (
+                  <div className="absolute top-4 right-4 bg-gray-500 text-white p-2 rounded-full">
+                    <Lock className="h-4 w-4" />
+                  </div>
+                )}
+                
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-2">
                     <span className={`px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(exam.category)}`}>
@@ -288,13 +320,30 @@ const Exams: React.FC = () => {
 
                 <div className="flex space-x-2">
                   {exam.status === 'active' && !exam.isCompleted && (
-                    <button
-                      onClick={() => handleStartExam(exam)}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
-                    >
-                      <Play className="h-4 w-4 mr-2" />
-                      Start Exam
-                    </button>
+                    <>
+                      {exam.isInProgress ? (
+                        <button
+                          onClick={() => handleStartExam(exam)}
+                          className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                        >
+                          <Play className="h-4 w-4 mr-2" />
+                          Continue Exam
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => handleStartExam(exam)}
+                          disabled={disabled}
+                          className={`flex-1 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center ${
+                            disabled 
+                              ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                              : 'bg-blue-600 hover:bg-blue-700 text-white'
+                          }`}
+                        >
+                          <Play className="h-4 w-4 mr-2" />
+                          Start Exam
+                        </button>
+                      )}
+                    </>
                   )}
                   
                   {exam.status === 'upcoming' && (
@@ -359,6 +408,117 @@ const Exams: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Exam Instructions Modal */}
+        {showInstructions && selectedExam && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-xl p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-800">Exam Instructions</h3>
+                <button
+                  onClick={() => setShowInstructions(false)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
+                  <h4 className="text-xl font-bold text-blue-900 mb-4">{selectedExam.title}</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="text-blue-700"><strong>Duration:</strong> {selectedExam.duration} minutes</p>
+                      <p className="text-blue-700"><strong>Questions:</strong> {selectedExam.totalQuestions}</p>
+                    </div>
+                    <div>
+                      <p className="text-blue-700"><strong>Deadline:</strong> {selectedExam.deadline}</p>
+                      <p className="text-blue-700"><strong>Difficulty:</strong> {selectedExam.difficulty}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold text-gray-800">Important Instructions:</h4>
+                  
+                  <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-200">
+                    <h5 className="font-semibold text-yellow-800 mb-2">⏰ Timing & Duration</h5>
+                    <ul className="text-yellow-700 text-sm space-y-1">
+                      <li>• You have {selectedExam.duration} minutes to complete this exam</li>
+                      <li>• Timer will start immediately when you begin</li>
+                      <li>• You can save progress and continue later before the deadline</li>
+                      <li>• Auto-submit will occur when time expires</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                    <h5 className="font-semibold text-green-800 mb-2">📝 Answer Requirements</h5>
+                    <ul className="text-green-700 text-sm space-y-1">
+                      <li>• Each question requires a detailed 2000-word answer</li>
+                      <li>• Word count is displayed in real-time</li>
+                      <li>• Answers exceeding word limit will be flagged</li>
+                      <li>• Use proper grammar and complete sentences</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-red-50 rounded-lg p-4 border border-red-200">
+                    <h5 className="font-semibold text-red-800 mb-2">🚫 Restrictions</h5>
+                    <ul className="text-red-700 text-sm space-y-1">
+                      <li>• Only one exam can be taken at a time</li>
+                      <li>• Other exams will be locked until completion</li>
+                      <li>• No external resources or collaboration allowed</li>
+                      <li>• Exam must be completed before deadline</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+                    <h5 className="font-semibold text-purple-800 mb-2">💾 Saving & Submission</h5>
+                    <ul className="text-purple-700 text-sm space-y-1">
+                      <li>• Answers are auto-saved every 5 seconds</li>
+                      <li>• You can exit and resume anytime before deadline</li>
+                      <li>• Manual save option available</li>
+                      <li>• Final submission cannot be undone</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="border-t border-gray-200 pt-6">
+                  <label className="flex items-start space-x-3">
+                    <input
+                      type="checkbox"
+                      checked={agreedToTerms}
+                      onChange={(e) => setAgreedToTerms(e.target.checked)}
+                      className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    />
+                    <span className="text-sm text-gray-700">
+                      I have read and understood all the instructions above. I agree to follow the exam guidelines and understand that this exam must be completed individually without external assistance. I acknowledge that only one exam can be taken at a time.
+                    </span>
+                  </label>
+                </div>
+
+                <div className="flex space-x-4">
+                  <button
+                    onClick={handleContinueExam}
+                    disabled={!agreedToTerms}
+                    className={`flex-1 font-bold py-3 px-6 rounded-lg transition-colors duration-200 ${
+                      agreedToTerms
+                        ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
+                  >
+                    {selectedExam.isInProgress ? 'Continue Exam' : 'Start Exam'}
+                  </button>
+                  <button
+                    onClick={() => setShowInstructions(false)}
+                    className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-medium py-3 px-6 rounded-lg transition-colors duration-200"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

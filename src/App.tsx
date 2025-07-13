@@ -45,6 +45,7 @@ function App() {
     setIsExamTaking(false);
     setActiveSection('exams');
   };
+
   const renderSection = () => {
     if (isExamTaking && selectedExamId) {
       return (
@@ -79,7 +80,7 @@ function App() {
       case 'admin':
         return <AdminDashboard />;
       case 'exams':
-        return <Exams />;
+        return <Exams onStartExam={handleStartExam} />;
       case 'leaderboard':
         return <Leaderboard onViewAnswers={handleViewAnswers} />;
       case 'results':

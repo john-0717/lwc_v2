@@ -36,6 +36,7 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
   const [timeLeft, setTimeLeft] = useState(duration * 60); // Convert to seconds
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [autoSaveStatus, setAutoSaveStatus] = useState<'saved' | 'saving' | 'error'>('saved');
 
   // Sample questions - in real app, these would come from props or API
@@ -131,6 +132,11 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
   const handleSubmit = () => {
     setShowSubmitConfirm(false);
     onComplete(answers);
+  };
+
+  const handleExit = () => {
+    setShowExitConfirm(false);
+    onExit();
   };
 
   const getCompletionStatus = () => {
@@ -229,10 +235,10 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
                 </button>
                 
                 <button
-                  onClick={onExit}
+                  onClick={() => setShowExitConfirm(true)}
                   className="w-full mt-2 bg-gray-300 hover:bg-gray-400 text-gray-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
                 >
-                  Exit (Save Progress)
+                  Save & Exit
                 </button>
               </div>
             </div>
@@ -356,6 +362,34 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
                 className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors duration-200"
               >
                 Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Exit Confirmation Modal */}
+      {showExitConfirm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-8 max-w-md w-full mx-4">
+            <h3 className="text-xl font-bold text-gray-800 mb-4">Save Progress & Exit?</h3>
+            <p className="text-gray-600 mb-6">
+              Your progress will be saved and you can continue this exam later before the deadline. 
+              You have answered {Object.keys(answers).length} out of {questions.length} questions.
+            </p>
+            
+            <div className="flex space-x-4">
+              <button
+                onClick={handleExit}
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200"
+              >
+                Save & Exit
+              </button>
+              <button
+                onClick={() => setShowExitConfirm(false)}
+                className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors duration-200"
+              >
+                Continue Exam
               </button>
             </div>
           </div>

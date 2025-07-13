@@ -22,6 +22,7 @@ function App() {
   const [selectedExamId, setSelectedExamId] = useState<number | null>(null);
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
   const [isExamTaking, setIsExamTaking] = useState(false);
+  const [currentExamData, setCurrentExamData] = useState<{id: number, title: string, duration: number} | null>(null);
 
   const handleViewAnswers = (userId: number, examId: number) => {
     setSelectedUserId(userId);
@@ -30,29 +31,32 @@ function App() {
   };
 
   const handleStartExam = (examId: number, examTitle: string, duration: number) => {
-    setSelectedExamId(examId);
+    setCurrentExamData({ id: examId, title: examTitle, duration });
     setIsExamTaking(true);
+    setActiveSection('exams'); // This will be overridden by exam taking view
   };
 
   const handleCompleteExam = (answers: { [key: number]: string }) => {
     // Handle exam completion logic here
     console.log('Exam completed with answers:', answers);
     setIsExamTaking(false);
+    setCurrentExamData(null);
     setActiveSection('results');
   };
 
   const handleExitExam = () => {
     setIsExamTaking(false);
+    // Keep currentExamData to maintain "in progress" state
     setActiveSection('exams');
   };
 
   const renderSection = () => {
-    if (isExamTaking && selectedExamId) {
+    if (isExamTaking && currentExamData) {
       return (
         <ExamTaking
-          examId={selectedExamId}
-          examTitle="Biblical Knowledge Assessment"
-          duration={120}
+          examId={currentExamData.id}
+          examTitle={currentExamData.title}
+          duration={currentExamData.duration}
           onComplete={handleCompleteExam}
           onExit={handleExitExam}
         />
@@ -80,7 +84,7 @@ function App() {
       case 'admin':
         return <AdminDashboard />;
       case 'exams':
-        return <Exams onStartExam={handleStartExam} />;
+        return <Exams onStartExam={handleStartExam} currentExamInProgress={currentExamData?.id || null} />;
       case 'leaderboard':
         return <Leaderboard onViewAnswers={handleViewAnswers} />;
       case 'results':

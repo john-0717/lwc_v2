@@ -39,12 +39,16 @@ interface Question {
   points: number;
 }
 
-const Exams: React.FC = () => {
+interface ExamsProps {
+  onStartExam?: (examId: number, examTitle: string, duration: number) => void;
+  currentExamInProgress?: number | null;
+}
+
+const Exams: React.FC<ExamsProps> = ({ onStartExam, currentExamInProgress }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [showInstructions, setShowInstructions] = useState(false);
   const [selectedExam, setSelectedExam] = useState<Exam | null>(null);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
-  const [currentExamInProgress, setCurrentExamInProgress] = useState<number | null>(1); // Simulate exam 1 in progress
 
   const exams: Exam[] = [
     {
@@ -154,10 +158,10 @@ const Exams: React.FC = () => {
 
   const handleContinueExam = () => {
     if (selectedExam && agreedToTerms) {
-      setCurrentExamInProgress(selectedExam.id);
+      if (onStartExam) {
+        onStartExam(selectedExam.id, selectedExam.title, selectedExam.duration);
+      }
       setShowInstructions(false);
-      // Here you would navigate to the exam taking component
-      console.log('Starting exam:', selectedExam.title);
     }
   };
 

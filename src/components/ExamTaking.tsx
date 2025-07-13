@@ -7,7 +7,9 @@ import {
   FileText, 
   CheckCircle,
   ArrowLeft,
-  ArrowRight
+  ArrowRight,
+  Globe,
+  Volume2
 } from 'lucide-react';
 
 interface Question {
@@ -25,6 +27,18 @@ interface ExamTakingProps {
   onExit: () => void;
 }
 
+interface Language {
+  code: string;
+  name: string;
+  nativeName: string;
+  flag: string;
+}
+
+interface TranslationSuggestion {
+  original: string;
+  translated: string;
+  confidence: number;
+}
 const ExamTaking: React.FC<ExamTakingProps> = ({ 
   examId, 
   examTitle, 
@@ -38,7 +52,43 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [autoSaveStatus, setAutoSaveStatus] = useState<'saved' | 'saving' | 'error'>('saved');
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>({
+    code: 'en',
+    name: 'English',
+    nativeName: 'English',
+    flag: '🇺🇸'
+  });
+  const [showLanguageSelector, setShowLanguageSelector] = useState(false);
+  const [translatedQuestions, setTranslatedQuestions] = useState<{ [key: number]: string }>({});
+  const [isTranslating, setIsTranslating] = useState(false);
+  const [translationSuggestions, setTranslationSuggestions] = useState<TranslationSuggestion[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [currentInput, setCurrentInput] = useState('');
 
+  // Available languages
+  const languages: Language[] = [
+    { code: 'en', name: 'English', nativeName: 'English', flag: '🇺🇸' },
+    { code: 'te', name: 'Telugu', nativeName: 'తెలుగు', flag: '🇮🇳' },
+    { code: 'hi', name: 'Hindi', nativeName: 'हिन्दी', flag: '🇮🇳' },
+    { code: 'ta', name: 'Tamil', nativeName: 'தமிழ்', flag: '🇮🇳' },
+    { code: 'kn', name: 'Kannada', nativeName: 'ಕನ್ನಡ', flag: '🇮🇳' },
+    { code: 'ml', name: 'Malayalam', nativeName: 'മലയാളം', flag: '🇮🇳' },
+    { code: 'bn', name: 'Bengali', nativeName: 'বাংলা', flag: '🇮🇳' },
+    { code: 'gu', name: 'Gujarati', nativeName: 'ગુજરાતી', flag: '🇮🇳' },
+    { code: 'mr', name: 'Marathi', nativeName: 'मराठी', flag: '🇮🇳' },
+    { code: 'pa', name: 'Punjabi', nativeName: 'ਪੰਜਾਬੀ', flag: '🇮🇳' },
+    { code: 'or', name: 'Odia', nativeName: 'ଓଡ଼ିଆ', flag: '🇮🇳' },
+    { code: 'as', name: 'Assamese', nativeName: 'অসমীয়া', flag: '🇮🇳' },
+    { code: 'es', name: 'Spanish', nativeName: 'Español', flag: '🇪🇸' },
+    { code: 'fr', name: 'French', nativeName: 'Français', flag: '🇫🇷' },
+    { code: 'de', name: 'German', nativeName: 'Deutsch', flag: '🇩🇪' },
+    { code: 'pt', name: 'Portuguese', nativeName: 'Português', flag: '🇵🇹' },
+    { code: 'ru', name: 'Russian', nativeName: 'Русский', flag: '🇷🇺' },
+    { code: 'ar', name: 'Arabic', nativeName: 'العربية', flag: '🇸🇦' },
+    { code: 'zh', name: 'Chinese', nativeName: '中文', flag: '🇨🇳' },
+    { code: 'ja', name: 'Japanese', nativeName: '日本語', flag: '🇯🇵' },
+    { code: 'ko', name: 'Korean', nativeName: '한국어', flag: '🇰🇷' }
+  ];
   // Sample questions - in real app, these would come from props or API
   const questions: Question[] = [
     {
@@ -73,6 +123,129 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
     }
   ];
 
+  // Mock translation function (in real app, this would call a translation API)
+  const translateText = async (text: string, targetLanguage: string): Promise<string> => {
+    setIsTranslating(true);
+    
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Mock translations for demonstration
+    const mockTranslations: { [key: string]: { [key: string]: string } } = {
+      'te': {
+        'Discuss the significance of the Sermon on the Mount': 'పర్వత ప్రసంగం యొక్క ప్రాముఖ్యతను చర్చించండి',
+        'Analyze the concept of grace': 'దయ అనే భావనను విశ్లేషించండి',
+        'Examine the role of prayer': 'ప్రార్థన పాత్రను పరిశీలించండి',
+        'Explore the concept of Christian leadership': 'క్రైస్తవ నాయకత్వ భావనను అన్వేషించండి',
+        'Discuss the importance of community': 'సమాజం యొక్క ప్రాముఖ్యతను చర్చించండి'
+      },
+      'hi': {
+        'Discuss the significance of the Sermon on the Mount': 'पर्वत पर उपदेश के महत्व पर चर्चा करें',
+        'Analyze the concept of grace': 'अनुग्रह की अवधारणा का विश्लेषण करें',
+        'Examine the role of prayer': 'प्रार्थना की भूमिका की जांच करें',
+        'Explore the concept of Christian leadership': 'ईसाई नेतृत्व की अवधारणा का अन्वेषण करें',
+        'Discuss the importance of community': 'समुदाय के महत्व पर चर्चा करें'
+      }
+    };
+    
+    setIsTranslating(false);
+    
+    const translations = mockTranslations[targetLanguage];
+    if (translations) {
+      for (const [english, translated] of Object.entries(translations)) {
+        if (text.includes(english)) {
+          return text.replace(english, translated);
+        }
+      }
+    }
+    
+    return text; // Return original if no translation found
+  };
+
+  // Mock input assistance function
+  const getInputSuggestions = async (input: string, targetLanguage: string): Promise<TranslationSuggestion[]> => {
+    if (input.length < 3 || targetLanguage === 'en') return [];
+    
+    // Mock suggestions for demonstration
+    const mockSuggestions: { [key: string]: TranslationSuggestion[] } = {
+      'te': [
+        { original: 'rayadam', translated: 'రాయడం', confidence: 0.95 },
+        { original: 'chadavadam', translated: 'చదవడం', confidence: 0.92 },
+        { original: 'matladam', translated: 'మాట్లాడం', confidence: 0.90 },
+        { original: 'vindam', translated: 'వినడం', confidence: 0.88 },
+        { original: 'chodam', translated: 'చూడం', confidence: 0.85 }
+      ],
+      'hi': [
+        { original: 'likhna', translated: 'लिखना', confidence: 0.95 },
+        { original: 'padhna', translated: 'पढ़ना', confidence: 0.92 },
+        { original: 'bolna', translated: 'बोलना', confidence: 0.90 },
+        { original: 'sunna', translated: 'सुनना', confidence: 0.88 },
+        { original: 'dekhna', translated: 'देखना', confidence: 0.85 }
+      ]
+    };
+    
+    const suggestions = mockSuggestions[targetLanguage] || [];
+    return suggestions.filter(s => 
+      s.original.toLowerCase().includes(input.toLowerCase()) ||
+      input.toLowerCase().includes(s.original.toLowerCase())
+    );
+  };
+
+  // Handle language change
+  const handleLanguageChange = async (language: Language) => {
+    setSelectedLanguage(language);
+    setShowLanguageSelector(false);
+    
+    if (language.code !== 'en') {
+      // Translate all questions
+      const translated: { [key: number]: string } = {};
+      for (const question of questions) {
+        translated[question.id] = await translateText(question.question, language.code);
+      }
+      setTranslatedQuestions(translated);
+    } else {
+      setTranslatedQuestions({});
+    }
+  };
+
+  // Handle input change with suggestions
+  const handleInputChange = async (questionId: number, value: string) => {
+    setCurrentInput(value);
+    handleAnswerChange(questionId, value);
+    
+    if (selectedLanguage.code !== 'en') {
+      const words = value.split(' ');
+      const lastWord = words[words.length - 1];
+      
+      if (lastWord.length >= 3) {
+        const suggestions = await getInputSuggestions(lastWord, selectedLanguage.code);
+        setTranslationSuggestions(suggestions);
+        setShowSuggestions(suggestions.length > 0);
+      } else {
+        setShowSuggestions(false);
+      }
+    }
+  };
+
+  // Apply suggestion
+  const applySuggestion = (suggestion: TranslationSuggestion) => {
+    const words = currentInput.split(' ');
+    words[words.length - 1] = suggestion.translated;
+    const newValue = words.join(' ');
+    
+    setCurrentInput(newValue);
+    handleAnswerChange(currentQuestionData.id, newValue);
+    setShowSuggestions(false);
+  };
+
+  // Text-to-speech for questions
+  const speakQuestion = (text: string) => {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = selectedLanguage.code;
+      speechSynthesis.speak(utterance);
+    }
+  };
   // Timer effect
   useEffect(() => {
     const timer = setInterval(() => {
@@ -149,6 +322,7 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
   const currentAnswer = answers[currentQuestionData.id] || '';
   const wordCount = getWordCount(currentAnswer);
   const isOverLimit = wordCount > currentQuestionData.wordLimit;
+  const displayQuestion = translatedQuestions[currentQuestionData.id] || currentQuestionData.question;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -162,6 +336,37 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
             </div>
             
             <div className="flex items-center space-x-6">
+              {/* Language Selector */}
+              <div className="relative">
+                <button
+                  onClick={() => setShowLanguageSelector(!showLanguageSelector)}
+                  className="flex items-center space-x-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors duration-200"
+                >
+                  <Globe className="h-4 w-4" />
+                  <span className="text-lg">{selectedLanguage.flag}</span>
+                  <span className="font-medium">{selectedLanguage.nativeName}</span>
+                </button>
+
+                {showLanguageSelector && (
+                  <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 max-h-64 overflow-y-auto">
+                    {languages.map((language) => (
+                      <button
+                        key={language.code}
+                        onClick={() => handleLanguageChange(language)}
+                        className={`w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center space-x-3 ${
+                          selectedLanguage.code === language.code ? 'bg-blue-50 text-blue-700' : 'text-gray-700'
+                        }`}
+                      >
+                        <span className="text-lg">{language.flag}</span>
+                        <div>
+                          <p className="font-medium">{language.nativeName}</p>
+                          <p className="text-sm text-gray-500">{language.name}</p>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
               {/* Auto-save status */}
               <div className="flex items-center space-x-2">
                 {autoSaveStatus === 'saving' && (
@@ -254,6 +459,16 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
                     Question {currentQuestion + 1}
                   </h2>
                   <div className="flex items-center space-x-4">
+                    {selectedLanguage.code !== 'en' && (
+                      <button
+                        onClick={() => speakQuestion(displayQuestion)}
+                        className="flex items-center space-x-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200"
+                        title="Listen to question"
+                      >
+                        <Volume2 className="h-4 w-4" />
+                        <span className="text-sm">Listen</span>
+                      </button>
+                    )}
                     <span className="text-sm text-gray-600">
                       {currentQuestionData.points} points
                     </span>
@@ -264,8 +479,13 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
                 </div>
                 
                 <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
+                  {isTranslating && (
+                    <div className="absolute top-2 right-2">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                    </div>
+                  )}
                   <p className="text-gray-800 leading-relaxed text-lg">
-                    {currentQuestionData.question}
+                    {displayQuestion}
                   </p>
                 </div>
               </div>
@@ -275,6 +495,11 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
                 <div className="flex items-center justify-between mb-3">
                   <label className="text-lg font-medium text-gray-800">
                     Your Answer
+                    {selectedLanguage.code !== 'en' && (
+                      <span className="text-sm text-blue-600 ml-2">
+                        (in {selectedLanguage.nativeName})
+                      </span>
+                    )}
                   </label>
                   <div className={`text-sm ${
                     isOverLimit ? 'text-red-600' : wordCount > currentQuestionData.wordLimit * 0.9 ? 'text-yellow-600' : 'text-gray-600'
@@ -285,13 +510,43 @@ const ExamTaking: React.FC<ExamTakingProps> = ({
                 
                 <textarea
                   value={currentAnswer}
-                  onChange={(e) => handleAnswerChange(currentQuestionData.id, e.target.value)}
-                  placeholder="Type your detailed answer here... (2000 words)"
+                  onChange={(e) => handleInputChange(currentQuestionData.id, e.target.value)}
+                  placeholder={selectedLanguage.code === 'en' 
+                    ? "Type your detailed answer here... (2000 words)" 
+                    : `${selectedLanguage.nativeName} లో మీ వివరణాత్మక సమాధానం టైప్ చేయండి... (2000 పదాలు)`
+                  }
                   className={`w-full h-96 p-4 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none ${
                     isOverLimit ? 'border-red-300' : 'border-gray-300'
                   }`}
+                  dir={['ar', 'he'].includes(selectedLanguage.code) ? 'rtl' : 'ltr'}
                 />
                 
+                {/* Translation Suggestions */}
+                {showSuggestions && translationSuggestions.length > 0 && (
+                  <div className="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-lg shadow-lg mt-1 z-10">
+                    <div className="p-2 border-b border-gray-200">
+                      <p className="text-xs text-gray-600">Translation suggestions:</p>
+                    </div>
+                    <div className="max-h-32 overflow-y-auto">
+                      {translationSuggestions.map((suggestion, index) => (
+                        <button
+                          key={index}
+                          onClick={() => applySuggestion(suggestion)}
+                          className="w-full text-left px-3 py-2 hover:bg-blue-50 flex items-center justify-between"
+                        >
+                          <div>
+                            <span className="text-gray-600 text-sm">{suggestion.original}</span>
+                            <span className="mx-2">→</span>
+                            <span className="font-medium">{suggestion.translated}</span>
+                          </div>
+                          <span className="text-xs text-gray-500">
+                            {Math.round(suggestion.confidence * 100)}%
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 {isOverLimit && (
                   <div className="mt-2 flex items-center text-red-600">
                     <AlertTriangle className="h-4 w-4 mr-2" />

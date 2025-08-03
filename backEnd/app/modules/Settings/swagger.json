@@ -1366,19 +1366,19 @@
         },
         "prodSk": {
           "type": "string",
-          "example": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
+          "example": "testkeys"
         },
         "prodPk": {
           "type": "string",
-          "example": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
+          "example": "testkeys"
         },
         "testSk": {
           "type": "string",
-          "example": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
+          "example": "testkeys"
         },
         "testPk": {
           "type": "string",
-          "example": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
+          "example": "testkeys"
         },
         "isGst": {
           "type": "Boolean",
@@ -1427,10 +1427,10 @@
             "status": true,
             "transactionTestKeyStatus": true,
             "isLive": true,
-            "prodSk": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
-            "prodPk": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
-            "testSk": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
-            "testPk": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
+            "prodSk": "testkeys",
+            "prodPk": "testkeys",
+            "testSk": "testkeys",
+            "testPk": "testkeys",
             "isGst": true,
             "gst": 18
           }

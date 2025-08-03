@@ -1,0 +1,48 @@
+{
+  "permissionCategory": {
+    "__v": 0,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "permission": {
+    "__v": 0,
+    "createdAt": 0,
+    "updatedAt": 0
+  },
+  "roleList": {
+    "__v": 0,
+    "createdAt": 0,
+    "updatedAt": 0,
+    "permissions": 0,
+    "isDeleted": 0
+  },
+  "permissionAggregate": {
+    "_id.__v": 0,
+    "_id.createdAt": 0,
+    "_id.updatedAt": 0,
+    "_id.status": 0
+  },
+  "roleListing": {
+    "_id": 1,
+    "role": 1,
+    "slug": 1,
+    "description": 1,
+    "status": 1,
+    "addedBy": 1,
+    "userCount": 1,
+    "createdAt": 1,
+    "isDefault": 1
+  },
+  "list": {
+    "role": 1,
+    "isDefault": 1
+  },
+  "adminList": {
+    "firstname": 1,
+    "lastname": 1,
+    "emailId": 1,
+    "role": 1,
+    "photo": 1,
+    "_id": 0
+  }
+}

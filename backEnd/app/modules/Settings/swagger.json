@@ -1,0 +1,1664 @@
+{
+  "paths": {
+    "/settings/general/meta-data": {
+      "post": {
+        "tags": ["Settings"],
+        "description": "Add/Edit Meta Data",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Metadata",
+            "schema": {
+              "$ref": "#/definitions/addMetaData"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Meta data added successfully.",
+            "schema": {
+              "$ref": "#/definitions/addMetaData"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Settings"],
+        "description": "To get meta data info",
+        "parameters": [
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "To get meta data"
+          }
+        }
+      }
+    },
+    "/user/general/meta-data": {
+      "get": {
+        "tags": ["Settings"],
+        "description": "To get meta data info",
+        "parameters": [
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "To get meta data"
+          }
+        }
+      }
+    },
+    "/settings/general/site-settings": {
+      "post": {
+        "tags": ["Settings"],
+        "description": "Add/Edit site settings Data",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Site Settings",
+            "schema": {
+              "$ref": "#/definitions/addSiteSetting"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Site settings data added successfully.",
+            "schema": {
+              "$ref": "#/definitions/addSiteSetting"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Settings"],
+        "description": "To get site settings data info",
+        "parameters": [
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "To get site settings data"
+          }
+        }
+      }
+    },
+    "/settings/general/analytical-data": {
+      "post": {
+        "tags": ["Settings"],
+        "description": "Add/Edit analitical data settings",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Analitical Data",
+            "schema": {
+              "$ref": "#/definitions/addAnalyticalData"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Analitical data added successfully.",
+            "schema": {
+              "$ref": "#/definitions/addAnalyticalData"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Settings"],
+        "description": "To get analitical settings data info",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "To get analitical settings data"
+          }
+        }
+      }
+    },
+    "/settings/general/site-un-maintenance": {
+      "post": {
+        "tags": ["Settings"],
+        "description": "Add/Update site under maintainance data",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "site under maintainance data",
+            "schema": {
+              "$ref": "#/definitions/addSiteUnMaintainance"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Site under maintainance data added successfully.",
+            "schema": {
+              "$ref": "#/definitions/addSiteUnMaintainance"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Settings"],
+        "description": "To get site under maintenance settings data info",
+        "parameters": [
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "To get site under maintainance settings data"
+          }
+        }
+      }
+    },
+    "/settings/general/date-time": {
+      "post": {
+        "tags": ["Settings"],
+        "description": "Add/Update date time general settings info",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "general settings date and time",
+            "schema": {
+              "$ref": "#/definitions/addUpdateDateTimeSettings"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "General settings add/edit date time info",
+            "schema": {
+              "$ref": "#/definitions/addUpdateDateTimeSettings"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Settings"],
+        "description": "get date time general settings info",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "get date time general settings info"
+          }
+        }
+      }
+    },
+    "/settings/general/change-2fa-status": {
+      "patch": {
+        "tags": ["Settings"],
+        "description": "change status for 2 FA",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "change status for 2 FA",
+            "schema": {
+              "$ref": "#/definitions/change2FAStatus"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Social Media sdk status change successfully",
+            "schema": {
+              "$ref": "#/definitions/change2FAStatus"
+            }
+          }
+        }
+      }
+    },
+    "/settings/social-media/social-media-sdk": {
+      "post": {
+        "tags": ["Settings"],
+        "description": "Add/Update social media sdk settings",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "social media sdk settings",
+            "schema": {
+              "$ref": "#/definitions/addUpdateSocialMediaSDK"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "SDK data added successfully.",
+            "schema": {
+              "$ref": "#/definitions/addUpdateSocialMediaSDK"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Settings"],
+        "description": "To get social media sdk settings data info",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "To get social media sdk settings data info"
+          }
+        }
+      }
+    },
+    "/settings/payment-gateway": {
+      "post": {
+        "tags": ["Settings"],
+        "description": "Add/Update payment settings",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "payment settings",
+            "schema": {
+              "$ref": "#/definitions/addUpdatePaymentGatewaySDK"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Payment Settings data added successfully.",
+            "schema": {
+              "$ref": "#/definitions/addUpdatePaymentGatewaySDKInRes"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Settings"],
+        "description": "To get payment gateway settings data info",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "To get social media sdk settings data info",
+            "schema": {
+              "$ref": "#/definitions/addUpdatePaymentGatewaySDKGetInRes"
+            }
+          }
+        }
+      }
+    },
+    "/settings/social-media/social-media-link": {
+      "post": {
+        "tags": ["Settings"],
+        "description": "Add/Update social media link settings",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "social media link settings",
+            "schema": {
+              "$ref": "#/definitions/addUpdatesocialMediaLink"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Social Media Link data added successfully.",
+            "schema": {
+              "$ref": "#/definitions/addUpdatesocialMediaLink"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Settings"],
+        "description": "To get social media link data info",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "To get social media link data info"
+          }
+        }
+      }
+    },
+    "/settings/social-media/sdk": {
+      "patch": {
+        "tags": ["Settings"],
+        "description": "change status for social media SDK settings",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "change status for social media SDK settings",
+            "schema": {
+              "$ref": "#/definitions/changeSocialSDKStatus"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Social Media sdk status change successfully",
+            "schema": {
+              "$ref": "#/definitions/changeSocialSDKStatus"
+            }
+          }
+        }
+      }
+    },
+    "/settings/smtp": {
+      "post": {
+        "tags": ["Settings"],
+        "description": "Add/Edit smtp settings detail",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add/Edit smtp settings detail",
+            "schema": {
+              "$ref": "#/definitions/addsmtpSettings"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "SMTP data added successfully.",
+            "schema": {
+              "$ref": "#/definitions/addsmtpSettings"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Settings"],
+        "description": "To get smtp settings detail",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "enter type to get smtp setting of that type",
+            "type": "string",
+            "example": "smtpSettings,smtpFeedbacks,smtpAccounts,smtpSupport"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "To get smtp settings details"
+          }
+        }
+      }
+    },
+    "/settings/sms": {
+      "post": {
+        "tags": ["Settings"],
+        "description": "Add/Edit SMS settings detail",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add/Edit SMS settings detail",
+            "schema": {
+              "$ref": "#/definitions/getSMSsettings"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "SMS data added successfully.",
+            "schema": {
+              "$ref": "#/definitions/getSMSsettings"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Settings"],
+        "description": "To get SMS settings detail",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "To get SMS settings details"
+          }
+        }
+      }
+    },
+    "/settings/email-settings/notifications": {
+      "get": {
+        "tags": ["Settings"],
+        "description": "To get all email settings notification details",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Email settings notifications details"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Settings"],
+        "description": "Change status of email settings notifications",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Change status of email settings notifications",
+            "schema": {
+              "$ref": "#/definitions/emailSettingStatusChangeReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Change status successfully.",
+            "schema": {
+              "$ref": "#/definitions/emailSettingStatusChangeRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/add-bank-details": {
+      "post": {
+        "tags": ["Adviser"],
+        "description": "Add bank account",
+        "parameters": [
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "possible key/params",
+            "schema": {
+              "$ref": "#/definitions/addBankInReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "possible response from api.",
+            "schema": {
+              "$ref": "#/definitions/editJobInRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/bank-details-listing": {
+      "get": {
+        "tags": ["Adviser"],
+        "description": "To get list of banks",
+        "parameters": [
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "possible response from api.",
+            "schema": {
+              "$ref": "#/definitions/bankListInRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "addMetaData": {
+      "required": [
+        "metaTitle",
+        "metaDecscription",
+        "metaKeywords",
+        "languageId"
+      ],
+      "properties": {
+        "languageId": {
+          "type": "string",
+          "example": "638f115f32ea140479188335",
+          "required": true
+        },
+        "metaTitle": {
+          "type": "string",
+          "example": "metaTitle"
+        },
+        "metaDecscription": {
+          "type": "string",
+          "example": "metaDecscription!"
+        },
+        "metaKeywords": {
+          "type": "string",
+          "example": "metaKeywords!"
+        }
+      }
+    },
+    "addSiteSetting": {
+      "required": [
+        "siteName",
+        "siteFevicon",
+        "siteLogoSmall",
+        "siteLogoLarge",
+        "siteCity",
+        "siteAddress",
+        "sitePhoneNo",
+        "siteEmail",
+        "siteLatitude",
+        "siteLongitude",
+        "languageId"
+      ],
+      "properties": {
+        "languageId": {
+          "type": "string",
+          "example": "638f115f32ea140479188335"
+        },
+        "siteName": {
+          "type": "string",
+          "example": "siteName"
+        },
+        "siteFevicon": {
+          "type": "string",
+          "example": "site.jpg"
+        },
+        "siteLogoSmall": {
+          "type": "string",
+          "example": "siteLogoSmall.jpg"
+        },
+        "siteLogoLarge": {
+          "type": "string",
+          "example": "siteLogoLarge.jpg"
+        },
+        "siteCity": {
+          "type": "string",
+          "example": "siteCity"
+        },
+        "siteAddress": {
+          "type": "string",
+          "example": "siteAddress"
+        },
+        "sitePhoneNo": {
+          "type": "number",
+          "example": 987867676523
+        },
+        "siteEmail": {
+          "type": "email",
+          "example": "admin_1@grr.la"
+        },
+        "siteLatitude": {
+          "type": "number",
+          "example": 87676544.89
+        },
+        "siteLongitude": {
+          "type": "number",
+          "example": 87676544.89
+        },
+        "siteFooterWebsiteName": {
+          "type": "string",
+          "example": "siteFooterWebsiteName"
+        },
+        "siteFooterCompanyName": {
+          "type": "string",
+          "example": "siteFooterCompanyName"
+        }
+      }
+    },
+    "addAnalyticalData": {
+      "required": ["analyticalSnippet", "headerSnippet", "footerSnippet"],
+      "properties": {
+        "analyticalSnippet": {
+          "type": "string",
+          "example": "analyticalSnippet"
+        },
+        "headerSnippet": {
+          "type": "string",
+          "example": "headerSnippet"
+        },
+        "footerSnippet": {
+          "type": "string",
+          "example": "footerSnippet"
+        }
+      }
+    },
+    "addSiteUnMaintainance": {
+      "required": [
+        "siteStatus",
+        "siteOfflineStartDate",
+        "siteOfflineMsg",
+        "siteOfflineEndDate",
+        "languageId"
+      ],
+      "properties": {
+        "languageId": {
+          "type": "string",
+          "example": "638f115f32ea140479188335",
+          "required": true
+        },
+        "siteStatus": {
+          "type": "boolean",
+          "example": true
+        },
+        "siteOfflineStartDate": {
+          "type": "string",
+          "example": ""
+        },
+        "siteOfflineEndDate": {
+          "type": "string",
+          "example": ""
+        },
+        "siteOfflineMsg": {
+          "type": "string",
+          "example": "siteOffflineMsg"
+        }
+      }
+    },
+    "addUpdateSocialMediaSDK": {
+      "required": [
+        "facebookAppId",
+        "facebookAppSecret",
+        "fbSDKactiveStatus",
+        "twitterAppId",
+        "twitterAppSecret",
+        "twitterSDKactiveStatus",
+        "linkedInAppId",
+        "linkedInAppSecret",
+        "linkinedSDKactiveStatus"
+      ],
+      "properties": {
+        "facebookAppId": {
+          "type": "string",
+          "example": "facebookAppId"
+        },
+        "facebookAppSecret": {
+          "type": "string",
+          "example": "facebookAppSecret"
+        },
+        "fbSDKactiveStatus": {
+          "type": "boolean",
+          "example": true
+        },
+        "twitterAppId": {
+          "type": "string",
+          "example": "twitterAppId"
+        },
+        "twitterAppSecret": {
+          "type": "string",
+          "example": "twitterAppSecret"
+        },
+        "twitterSDKactiveStatus": {
+          "type": "boolean",
+          "example": true
+        },
+        "linkedInAppId": {
+          "type": "string",
+          "example": "linkedInAppId"
+        },
+        "linkedInAppSecret": {
+          "type": "string",
+          "example": "linkedInAppSecret"
+        },
+        "linkinedSDKactiveStatus": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "addUpdatePaymentGatewaySDK": {
+      "required": ["status", "isLive"],
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "isLive": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "prodSk": {
+          "type": "string",
+          "example": "testkeys"
+        },
+        "prodPk": {
+          "type": "string",
+          "example": "testkeys"
+        },
+        "testSk": {
+          "type": "string",
+          "example": "testkeys"
+        },
+        "testPk": {
+          "type": "string",
+          "example": "testkeys"
+        },
+        "isGst": {
+          "type": "Boolean",
+          "example": true
+        },
+        "gst": {
+          "type": "number",
+          "example": 18
+        }
+      }
+    },
+    "addUpdatePaymentGatewaySDKInRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "string",
+          "example": "payment gateway data updated"
+        }
+      }
+    },
+    "addUpdatePaymentGatewaySDKGetInRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "Object",
+          "example": {
+            "_id": "649982156dfffc9582059287",
+            "status": true,
+            "transactionTestKeyStatus": true,
+            "isLive": true,
+            "prodSk": "testkeys",
+            "prodPk": "testkeys",
+            "testSk": "testkeys",
+            "testPk": "testkeys",
+            "isGst": true,
+            "gst": 18
+          }
+        }
+      }
+    },
+    "addUpdatesocialMediaLink": {
+      "required": [
+        "fbUrl",
+        "twitterUrl",
+        "linkedinUrl",
+        "instagramUrl",
+        "youtubeUrl"
+      ],
+      "properties": {
+        "fbUrl": {
+          "type": "string",
+          "example": "fbUrl"
+        },
+        "twitterUrl": {
+          "type": "string",
+          "example": "twitterUrl"
+        },
+        "linkedinUrl": {
+          "type": "string",
+          "example": "linkedinUrl"
+        },
+        "instagramUrl": {
+          "type": "string",
+          "example": "instagramUrl"
+        },
+        "youtubeUrl": {
+          "type": "string",
+          "example": "youtubeUrl"
+        }
+      }
+    },
+    "addUpdateDateTimeSettings": {
+      "required": ["timeZone", "dateFormat", "currency", "timeFormat"],
+      "properties": {
+        "timeZone": {
+          "type": "string",
+          "example": "Asia/Kolkata"
+        },
+        "dateFormat": {
+          "type": "string",
+          "example": "DD-MM-YYYY"
+        },
+        "currency": {
+          "type": "string",
+          "example": "INR"
+        },
+        "timeFormat": {
+          "type": "string",
+          "example": "12 Hours"
+        }
+      }
+    },
+    "changeSocialSDKStatus": {
+      "required": ["id", "twitterSDKStatus"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "63809ae732e8fac1784d9e05"
+        },
+        "twitterSDKStatus": {
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
+    "change2FAStatus": {
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
+    "addsmtpSettings": {
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "enum": [
+            "smtpSettings",
+            "smtpFeedbacks",
+            "smtpAccounts",
+            "smtpSupport"
+          ],
+          "example": "smtpSettings,smtpFeedbacks,smtpAccounts,smtpSupport"
+        },
+        "smtpSettings": {
+          "type": "Object",
+          "example": {
+            "host": "smtp.gmail.com",
+            "port": 567,
+            "encryption": "HSH-265",
+            "userName": "admin_1@grr.la",
+            "password": "user_123",
+            "fromEmail": "admin_1@grr.la",
+            "fromName": "user_123"
+          }
+        }
+      }
+    },
+    "addSMSdetails": {
+      "required": ["userName", "password", "appId"],
+      "properties": {
+        "userName": {
+          "type": "string",
+          "example": "smtp.gmail.com"
+        },
+        "password": {
+          "type": "number",
+          "example": 567
+        },
+        "appId": {
+          "type": "string",
+          "example": "HSH-265"
+        }
+      }
+    },
+    "emailSettingStatusChangeReq": {
+      "required": "notificationId",
+      "properties": {
+        "notificationId": {
+          "example": "63809ae732e8fac1784d9e05",
+          "type": "string"
+        }
+      }
+    },
+    "emailSettingStatusChangeRes": {
+      "properties": {
+        "status": {
+          "type": "number",
+          "example": "1"
+        },
+        "message": {
+          "type": "string",
+          "example": "Status update successfully."
+        }
+      }
+    },
+    "addBankInReq": {
+      "properties": {
+        "accountHolderName": {
+          "type": "String",
+          "example": "john doe",
+          "required": true
+        },
+        "accountHolderType": {
+          "type": "String",
+          "example": "Individual",
+          "required": true
+        },
+        "accountNumber": {
+          "type": "Number",
+          "example": 12345671234,
+          "required": true
+        },
+        "routingNumber": {
+          "type": "Number",
+          "example": 123456789,
+          "required": true
+        },
+        "country": {
+          "type": "String",
+          "example": "NZD",
+          "required": true
+        }
+      },
+      "required": [
+        "accountHolderName",
+        "accountHolderType",
+        "accountNumber",
+        "routingNumber",
+        "country"
+      ]
+    },
+    "addBankInRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Account added successfully."
+        },
+        "data": {
+          "type": "Object",
+          "example": {}
+        }
+      }
+    },
+    "bankListInRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "Object",
+          "example": [
+            {
+              "id": "ba_1ODRO52eZvKYlo2CAZ6ozq6h",
+              "object": "bank_account",
+              "account_holder_name": "Jane Austen",
+              "account_holder_type": "company",
+              "account_type": null,
+              "bank_name": "STRIPE TEST BANK",
+              "country": "US",
+              "currency": "usd",
+              "fingerprint": "1JWtPxqbdX5Gamtc",
+              "last4": "6789",
+              "metadata": {},
+              "routing_number": "110000000",
+              "status": "new",
+              "account": "acct_1032D82eZvKYlo2C"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

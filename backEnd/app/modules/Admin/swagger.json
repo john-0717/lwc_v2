@@ -1,0 +1,2118 @@
+{
+  "paths": {
+    "/admin/login": {
+      "post": {
+        "tags": ["Admin"],
+        "description": "Login",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Login",
+            "schema": {
+              "$ref": "#/definitions/AdminLoginReq"
+            }
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A JWT Token response with User object",
+            "schema": {
+              "$ref": "#/definitions/AdminLoginRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/send-otp": {
+      "post": {
+        "tags": ["Admin"],
+        "description": "Send OTP",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Send OTP",
+            "schema": {
+              "$ref": "#/definitions/SendOtpReq"
+            }
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "An OTP sent.",
+            "schema": {
+              "$ref": "#/definitions/SendOtpRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/verify-otp": {
+      "post": {
+        "tags": ["Admin"],
+        "description": "Verify OTP",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Verify OTP",
+            "schema": {
+              "$ref": "#/definitions/verifyOtpReq"
+            }
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "An OTP response with AuthToken",
+            "schema": {
+              "$ref": "#/definitions/verifyOtpRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/profile": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Get User Profile",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Get User Profile.",
+            "schema": {
+              "$ref": "#/definitions/AdminProfileRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/edit-profile": {
+      "post": {
+        "tags": ["Admin"],
+        "description": "Admin Edit Profile use {isThemeDark: true/false} for light & Dark theme",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Edit Profile",
+            "schema": {
+              "$ref": "#/definitions/AdminEditProfileReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Edit Profile Response",
+            "schema": {
+              "$ref": "#/definitions/AdminEditProfileRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/logout": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Logout admin",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Logout admin.",
+            "schema": {
+              "$ref": "#/definitions/AdminLogoutRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/refresh-access-token": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Refresh access token",
+        "parameters": [
+          {
+            "name": "refreshToken",
+            "required": true,
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Refresh access token."
+          }
+        }
+      }
+    },
+    "/admin/change-password": {
+      "post": {
+        "tags": ["Admin"],
+        "description": "Admin Change Password",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Change Password",
+            "schema": {
+              "$ref": "#/definitions/AdminChangePasswordReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Change Password Response",
+            "schema": {
+              "$ref": "#/definitions/AdminChangePasswordRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/forgot-password": {
+      "post": {
+        "tags": ["Admin"],
+        "description": "Admin Forgot Password Mail",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Forgot Password",
+            "schema": {
+              "$ref": "#/definitions/AdminForgotPasswordReq"
+            }
+          },
+          {
+            "name": "Technology",
+            "in": "header",
+            "description": "Enter Technology from this : react/angular/vue",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Forgot Password Response",
+            "schema": {
+              "$ref": "#/definitions/AdminForgotPasswordRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/reset-password": {
+      "post": {
+        "tags": ["Admin"],
+        "description": "Admin Reset Password",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Reset Password",
+            "schema": {
+              "$ref": "#/definitions/AdminResetPasswordReq"
+            }
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Reset Password Response",
+            "schema": {
+              "$ref": "#/definitions/AdminResetPasswordRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/image-file-upload": {
+      "post": {
+        "tags": ["Admin"],
+        "description": "Upload upload .png ,.jpg/jpeg, .ico files only.",
+        "parameters": [
+          {
+            "name": "file",
+            "required": true,
+            "in": "formData",
+            "type": "file",
+            "description": "Upload file"
+          },
+          {
+            "name": "width",
+            "required": true,
+            "in": "formData",
+            "type": "number",
+            "description": "width of image file"
+          },
+          {
+            "name": "height",
+            "required": true,
+            "in": "formData",
+            "type": "number",
+            "description": "height of image"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["multipart/form-data"],
+        "responses": {
+          "200": {
+            "description": "File uploaded",
+            "schema": {
+              "$ref": "#/definitions/Uploadfile"
+            }
+          }
+        }
+      }
+    },
+    "/admin/video-file-upload": {
+      "post": {
+        "tags": ["Admin"],
+        "description": "Upload upload .mp4 ,.mov/avi files only.",
+        "parameters": [
+          {
+            "name": "file",
+            "required": true,
+            "in": "formData",
+            "type": "file",
+            "description": "Upload file"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["multipart/form-data"],
+        "responses": {
+          "200": {
+            "description": "File uploaded",
+            "schema": {
+              "$ref": "#/definitions/VideoUploadFile"
+            }
+          }
+        }
+      }
+    },
+    "/admin/global-config": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Get Admin global Config",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Get User Profile.",
+            "schema": {
+              "$ref": "#/definitions/globalConfigRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin": {
+      "delete": {
+        "tags": ["Admin"],
+        "description": "Delete Sub Admin User",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Get User Profile.",
+            "schema": {
+              "$ref": "#/definitions/AdminDeleteRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/dashboard-count": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Get counts of users,jobs,shortlisted applicant,total earnings and jobs posted today, yesterday, last week and last month",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Get counts of users,jobs,shortlisted applicant,total earnings and jobs posted today, yesterday, last week and last month",
+            "schema": {
+              "$ref": "#/definitions/dashboardCountRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/dashboard-chart": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Dashboard Chart",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "filterBy",
+            "in": "query",
+            "description": "filter data by week or month",
+            "type": "string",
+            "example": "byWeek/last1Day/byMonth"
+          },
+          {
+            "name": "week",
+            "in": "query",
+            "description": "filter data for specific week by passing number",
+            "type": "Number",
+            "example": 4
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "description": "filter data for specific week by passing number and month (mandatory for byWeek filter)",
+            "type": "Number",
+            "example": 5
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "filter data for specific year",
+            "type": "Number",
+            "example": 2023
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Dashboard Chart",
+            "schema": {
+              "$ref": "#/definitions/dashboardChartRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/dashboard/top-ten-employer": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Top ten employer list",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Top ten employer list",
+            "schema": {
+              "$ref": "#/definitions/topTenEmployerRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/employer-list": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Employer List",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "filter data",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page no",
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "page size",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "search",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Employer List",
+            "schema": {
+              "$ref": "#/definitions/employerListRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/notifications": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Notifications list",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "search key",
+            "type": "string"
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "from date",
+            "type": "string"
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "to date",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "number"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of pages",
+            "type": "number"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Notifications list",
+            "schema": {
+              "$ref": "#/definitions/notificationListingInRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/delete-notification": {
+      "delete": {
+        "tags": ["Admin"],
+        "description": "Delete Notification",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete Notification",
+            "schema": {
+              "$ref": "#/definitions/deleteNotificationsInReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Delete notifications.",
+            "schema": {
+              "$ref": "#/definitions/deleteNotificationRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/notifications-download": {
+      "post": {
+        "tags": ["Admin"],
+        "description": "Download Notifications Details type:'excel/csv/pdf'.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Download Notifications Details type:'excel/csv/pdf'.",
+            "schema": {
+              "$ref": "#/definitions/notificationsDownloadInReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Download Notifications Details type:'excel/csv/pdf'.",
+            "schema": {
+              "$ref": "#/definitions/notificationsDownloadInRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/mark-notification": {
+      "post": {
+        "tags": ["Admin"],
+        "description": "Mark as read Notification",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Mark as read Notification",
+            "schema": {
+              "$ref": "#/definitions/markAsReadNotificationsInReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Mark as read Notification",
+            "schema": {
+              "$ref": "#/definitions/markAsReadNotificationsInRes"
+            }
+          }
+        }
+      }
+    },
+    "admin/dashboard/shortlist-applicant": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Get Shortlist Applicant List",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page no",
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "page size",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "search by first name , last name, company email, company name, job title",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Get Shortlist Applicant List",
+            "schema": {
+              "$ref": "#/definitions/shortlistApplicantListRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/total-earning/chart": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Total earning chart",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "year (in number)",
+            "type": "number",
+            "example": 2023
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "description": "month (in number)",
+            "type": "number",
+            "example": 5
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Total earning chart",
+            "schema": {
+              "$ref": "#/definitions/totalEarningChartRes"
+            }
+          }
+        }
+      }
+    },
+    "/admin/total-earning/employer-list": {
+      "get": {
+        "tags": ["Admin"],
+        "description": "Get Total Earning Employer List",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page no",
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "page size",
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "year ( in number )",
+            "type": "number",
+            "example": 2023
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "description": "month ( in number )",
+            "type": "number",
+            "example": 7
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Get Total Earning Employer List",
+            "schema": {
+              "$ref": "#/definitions/totalEarningEmployerListRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AdminLoginReq": {
+      "required": ["emailId", "password"],
+      "properties": {
+        "emailId": {
+          "type": "string",
+          "example": "seed_admin@grr.la",
+          "uniqueItems": true,
+          "required": true
+        },
+        "password": {
+          "type": "string",
+          "example": "Tester1!",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "AdminLoginRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Please Select 2-Factor Mode."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "maskedEmail": "s*********@grr.la",
+            "maskedPhone": "00*********",
+            "sendOTPToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbElkIjoic2VlZF9hZG1pbkBncnIubGEiLCJhbGdvcml0aG0iOiJIUzI1NiIsImV4cCI6MTY2OTQ3NDc1OSwiaWF0IjoxNjY5MTEzMzE5fQ.O0nwxjpbYX_a1RDVqqxkOsPBPClZRQ_V_3OtiJ3J_8s"
+          }
+        }
+      }
+    },
+    "AdminProfileRes": {
+      "properties": {
+        "status": {
+          "type": "number",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get user details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "_id": "634d417280a8a8ec23ea0f4f",
+            "firstname": "Admin",
+            "lastname": "Admin",
+            "mobile": "+91-0000000000",
+            "emailId": "seed_admin@grr.la",
+            "photo": "",
+            "emailVerificationStatus": true,
+            "status": true,
+            "role": {
+              "role": "Super Admin",
+              "_id": "63a011ac0cf719d4deaccdc6"
+            },
+            "dateofbirth": "2000-01-20T00:00:00.000Z",
+            "gender": "Male",
+            "website": "https://www.indianic.com/",
+            "address": "201, Dev Arc, SG Road, Ahmedabad 380015, Gujarat, India",
+            "fbId": "https://www.facebook.com/indianicinfotechlimited/",
+            "twitterId": "https://twitter.com/indianic?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+            "instagramId": "https://www.instagram.com/indianic/?hl=en",
+            "githubId": "https://github.com/indianic/awesome-design-systems",
+            "codepen": "https://codepen.io/IndiaNIC/",
+            "slack": "https://www.indianic.com/blog/management-leadership/business-benefits-of-slack.html",
+            "isThemeDark": false
+          }
+        }
+      }
+    },
+    "AdminEditProfileReq": {
+      "required": [
+        "firstname",
+        "lastname",
+        "mobile",
+        "photo",
+        "role",
+        "dateofbirth",
+        "gender",
+        "website",
+        "address",
+        "fbId",
+        "twitterId",
+        "instagramId",
+        "githubId",
+        "codepen",
+        "slack",
+        "isThemeDark",
+        "countryCode"
+      ],
+      "properties": {
+        "firstname": {
+          "type": "string",
+          "example": "Admin",
+          "required": true
+        },
+        "lastname": {
+          "type": "string",
+          "example": "Admin",
+          "required": true
+        },
+        "mobile": {
+          "type": "string",
+          "example": "+91-0000000000",
+          "uniqueItems": true,
+          "required": true
+        },
+        "photo": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "role": {
+          "type": "string",
+          "example": "63a011ac0cf719d4deaccdc6",
+          "required": true
+        },
+        "dateofbirth": {
+          "type": "string",
+          "example": "2000-01-20",
+          "required": true
+        },
+        "gender": {
+          "type": "string",
+          "example": "Male",
+          "required": true
+        },
+        "website": {
+          "type": "string",
+          "example": "https://www.indianic.com/",
+          "required": true
+        },
+        "address": {
+          "type": "string",
+          "example": "201, Dev Arc, SG Road, Ahmedabad 380015, Gujarat, India",
+          "required": true
+        },
+        "fbId": {
+          "type": "string",
+          "example": "https://www.facebook.com/indianicinfotechlimited/",
+          "required": true
+        },
+        "twitterId": {
+          "type": "string",
+          "example": "https://twitter.com/indianic?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+          "required": true
+        },
+        "instagramId": {
+          "type": "string",
+          "example": "https://www.instagram.com/indianic/?hl=en",
+          "required": true
+        },
+        "githubId": {
+          "type": "string",
+          "example": "https://github.com/indianic/awesome-design-systems",
+          "required": true
+        },
+        "codepen": {
+          "type": "string",
+          "example": "https://codepen.io/IndiaNIC/",
+          "required": true
+        },
+        "slack": {
+          "type": "string",
+          "example": "https://www.indianic.com/blog/management-leadership/business-benefits-of-slack.html",
+          "required": true
+        },
+        "isThemeDark": {
+          "type": "boolean",
+          "example": "false",
+          "required": true
+        },
+        "countryCode": {
+          "type": "string",
+          "example": "in",
+          "required": true
+        },
+        "timeZone": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "dateFormat": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "currency": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "timeFormat": {
+          "type": "string",
+          "example": "",
+          "required": true
+        }
+      }
+    },
+    "AdminEditProfileRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Admin profile has been update successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "_id": "634d417280a8a8ec23ea0f4f",
+            "firstname": "Admin",
+            "lastname": "Admin",
+            "mobile": "+91-0000000000",
+            "emailId": "seed_admin@grr.la",
+            "photo": "",
+            "emailVerificationStatus": true,
+            "status": true,
+            "role": {
+              "role": "Super Admin",
+              "_id": "63a011ac0cf719d4deaccdc6"
+            },
+            "dateofbirth": "2000-01-20T00:00:00.000Z",
+            "gender": "Male",
+            "website": "https://www.indianic.com/",
+            "address": "201, Dev Arc, SG Road, Ahmedabad 380015, Gujarat, India",
+            "fbId": "https://www.facebook.com/indianicinfotechlimited/",
+            "twitterId": "https://twitter.com/indianic?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+            "instagramId": "https://www.instagram.com/indianic/?hl=en",
+            "githubId": "https://github.com/indianic/awesome-design-systems",
+            "codepen": "https://codepen.io/IndiaNIC/",
+            "slack": "https://www.indianic.com/blog/management-leadership/business-benefits-of-slack.html",
+            "isThemeDark": false
+          }
+        }
+      }
+    },
+    "AdminLogoutRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Logged out successfully."
+        }
+      }
+    },
+    "SendOtpReq": {
+      "properties": {
+        "sendOTPToken": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbElkIjoic2VlZF9hZG1pbkBncnIubGEiLCJhbGdvcml0aG0iOiJIUzI1NiIsImV4cCI6MTY2OTQ3NDc1OSwiaWF0IjoxNjY5MTEzMzE5fQ.O0nwxjpbYX_a1RDVqqxkOsPBPClZRQ_V_3OtiJ3J_8s"
+        },
+        "mode": {
+          "type": "string",
+          "example": "email/phone"
+        }
+      }
+    },
+    "SendOtpRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "OTP sent successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "sendOTPToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbElkIjoic2VlZF9hZG1pbkBncnIubGEiLCJhbGdvcml0aG0iOiJIUzI1NiIsImV4cCI6MTY2OTQ3NDc1OSwiaWF0IjoxNjY5MTEzMzE5fQ.O0nwxjpbYX_a1RDVqqxkOsPBPClZRQ_V_3OtiJ3J_8s",
+            "otpVerficationToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2RlIjoiZW1haWwiLCJhbGdvcml0aG0iOiJIUzI1NiIsImV4cCI6MTY2OTQ4MDEzMSwiaWF0IjoxNjY5MTE4NjkxfQ.WyvHQv5_MH9HMkiuMVKigHb1Xox1TWmmW2xCswUJ-IQ",
+            "expirationTime": 1669118747886
+          }
+        }
+      }
+    },
+    "verifyOtpReq": {
+      "properties": {
+        "otpVerficationToken": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2RlIjoiZW1haWwiLCJhbGdvcml0aG0iOiJIUzI1NiIsImV4cCI6MTY2OTQ4MDEzMSwiaWF0IjoxNjY5MTE4NjkxfQ.WyvHQv5_MH9HMkiuMVKigHb1Xox1TWmmW2xCswUJ-IQ"
+        },
+        "otp": {
+          "type": "string",
+          "example": "158251",
+          "required": true
+        },
+        "deviceId": {
+          "type": "string",
+          "example": "android/ios/web",
+          "required": true
+        }
+      }
+    },
+    "verifyOtpRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Logged in successfully."
+        },
+        "extra_meta": {
+          "type": "object",
+          "example": {
+            "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU0ZjgyNmQ2MDk3OWJiODZmZmJiMSIsImFsZ29yaXRobSI6IkhTMjU2IiwiZXhwIjoxNjc1NTE4Mzg1LCJpYXQiOjE2NzUxNTY5NDV9.2tcnJhq0ViDp4wdeSfArRI8nEl3SVPW0UhPj-jb6OtY",
+            "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU0ZjgyNmQ2MDk3OWJiODZmZmJiMSIsImFsZ29yaXRobSI6IkhTMjU2IiwiZXhwIjoxNjc1NTE4Mzg1LCJpYXQiOjE2NzUxNTY5NDV9.V9wLGYgMTtiLzqFIjbe3QBKZzaYiFxZHui1he49ip3c"
+          }
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "_id": "636e4f826d60979bb86ffbb1",
+            "firstname": "Admin",
+            "lastname": "Admin",
+            "mobile": "+244-98765434546",
+            "emailId": "seed_admin@grr.la",
+            "photo": "imageCompress_300_1674211381431.webp",
+            "emailVerificationStatus": true,
+            "status": false,
+            "role": {
+              "role": "Super Admin",
+              "_id": "63a011ac0cf719d4deaccdc6"
+            },
+            "dateofbirth": "2023-01-12T00:00:00.000Z",
+            "gender": "Male",
+            "website": "https://www.indianic.com/",
+            "address": "201, Dev Arc, SG Road, Ahmedabad 380015, Gujarat, India",
+            "fbId": "https://www.facebook.com/indianicinfotechlimited/",
+            "twitterId": "https://twitter.com/indianic?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+            "instagramId": "https://www.instagram.com/indianic/?hl=en",
+            "githubId": "https://github.com/indianic/awesome-design-systems",
+            "codepen": "https://codepen.io/IndiaNIC/",
+            "slack": "https://www.indianic.com/blog/management-leadership/business-benefits-of-slack.html",
+            "createdAt": "2022-11-11T13:34:58.299Z",
+            "isThemeDark": false,
+            "countryCode": "AO",
+            "languageId": "638f115f32ea140479188335",
+            "currency": "INR",
+            "dateFormat": "YYYY-DD-MM",
+            "timeFormat": "12 hours",
+            "timeZone": "(+05:30) Asia/Kolkata"
+          }
+        }
+      }
+    },
+    "AdminChangePasswordReq": {
+      "required": ["currentPassword", "newPassword"],
+      "properties": {
+        "currentPassword": {
+          "type": "string",
+          "example": "Test1234",
+          "required": true
+        },
+        "newPassword": {
+          "type": "string",
+          "example": "Test12345",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "AdminChangePasswordRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Password changed successfully."
+        }
+      }
+    },
+    "AdminForgotPasswordReq": {
+      "required": ["emailId"],
+      "properties": {
+        "emailId": {
+          "type": "string",
+          "example": "seed_admin@grr.la",
+          "required": true
+        }
+      }
+    },
+    "AdminForgotPasswordRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Please check your registered mail account."
+        }
+      }
+    },
+    "AdminResetPasswordReq": {
+      "required": ["token", "password"],
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU0ZjgyNmQ2MDk3OWJiODZmZmJiMSIsImFsZ29yaXRobSI6IkhTMjU2IiwiZXhwIjoxNjY4ODUxMjYyLCJpYXQiOjE2Njg0ODk4MjJ9.qlz-9MRtCUc7av0UieYw59VcpJ1o8uQ3zgKU9Va6Mwo",
+          "required": true
+        },
+        "password": {
+          "type": "string",
+          "example": "Test1234",
+          "required": true
+        }
+      }
+    },
+    "AdminResetPasswordRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Password updated successfully."
+        }
+      }
+    },
+    "Uploadfile": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "filePath": "imageCompress_300_1675160183856.webp"
+          }
+        }
+      }
+    },
+    "VideoUploadFile": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "filePath": "videoCompress_1675068153398.webm"
+          }
+        }
+      }
+    },
+    "globalConfigRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "currency": "Pound",
+            "dateFormat": "YY-DD-MM",
+            "timeFormat": "12 hours",
+            "timeZone": "America/Cambridge_Bay"
+          }
+        }
+      }
+    },
+    "AdminDeleteRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Admin User Deleted Successfully."
+        }
+      }
+    },
+    "dashboardCountRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": 1
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "totalEmployer": 7,
+            "totalApplicant": 0,
+            "activeJobCount": 2,
+            "expiredJobCount": 1,
+            "shortListedCount": 2,
+            "todayPublishedJobs": 1,
+            "yesterdayPublishedJobs": 0,
+            "weekPublishedJobs": 1,
+            "monthPublishedJobs": 2,
+            "revenue": 1200
+          }
+        }
+      }
+    },
+    "dashboardChartRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "data": {
+          "type": "Object",
+          "example": {
+            "listing": [
+              {
+                "date": "22-05-2023",
+                "revenue": 0,
+                "jobRevenue": 0
+              },
+              {
+                "date": "23-05-2023",
+                "revenue": 0,
+                "jobRevenue": 0
+              },
+              {
+                "date": "24-05-2023",
+                "revenue": 600,
+                "jobRevenue": 300
+              },
+              {
+                "date": "25-05-2023",
+                "revenue": 0,
+                "jobRevenue": 0
+              },
+              {
+                "date": "26-05-2023",
+                "revenue": 0,
+                "jobRevenue": 0
+              },
+              {
+                "date": "27-05-2023",
+                "revenue": 0,
+                "jobRevenue": 0
+              },
+              {
+                "date": "28-05-2023",
+                "revenue": 0,
+                "jobRevenue": 0
+              }
+            ],
+            "xAxis": [
+              "22-05-2023",
+              "23-05-2023",
+              "24-05-2023",
+              "25-05-2023",
+              "26-05-2023",
+              "27-05-2023",
+              "28-05-2023"
+            ],
+            "weeks": ["week1", "week2", "week3", "week4", "week5"]
+          }
+        }
+      }
+    },
+    "totalEarningChartRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "data": {
+          "type": "Object",
+          "example": {
+            "day1": 0,
+            "day2": 0,
+            "day3": 894200,
+            "day4": 400,
+            "day5": 0,
+            "day6": 0,
+            "day7": 13660,
+            "day8": 0,
+            "day9": 0,
+            "day10": 0,
+            "day11": 1960,
+            "day12": 0,
+            "day13": 5600,
+            "day14": 0,
+            "day15": 0,
+            "day16": 0,
+            "day17": 0,
+            "day18": 0,
+            "day19": 0,
+            "day20": 15600,
+            "day21": 62400,
+            "day22": 0,
+            "day23": 0,
+            "day24": 27780,
+            "day25": 115440,
+            "day26": 224085,
+            "day27": 52240,
+            "day28": 45825,
+            "day29": 0,
+            "day30": 12880,
+            "day31": 7000
+          }
+        }
+      }
+    },
+    "topTenEmployerRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": 1
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "listing": [
+              {
+                "_id": "634d417280a8a8ec23ea0f4f",
+                "companyName": "IndiaNIC",
+                "email": "john@gmail.com",
+                "phoneCode": 91,
+                "phone": 98876767673,
+                "nzbn": true,
+                "numOfJobPosted": 400
+              }
+            ]
+          }
+        }
+      }
+    },
+    "employerListRes": {
+      "properties": {
+        "status": {
+          "type": "number",
+          "example": 1
+        },
+        "message": {
+          "type": "string",
+          "example": ""
+        },
+        "data": {
+          "type": "array",
+          "example": [
+            {
+              "listing": [
+                {
+                  "nzbn": 986767676444,
+                  "tradingName": "trading name",
+                  "companyName": "company name",
+                  "industry": "industry name",
+                  "addressLine1": "address line 1",
+                  "addressLine2": "address line 1",
+                  "addressCountry": "address country",
+                  "contactPersonFullName": "name",
+                  "contactPersonPosition": "position",
+                  "contactPersonEmail": "john@gmail.com",
+                  "contactPersonPhone": 987674767444,
+                  "accreditationDetails": "details",
+                  "accreditationExpiryDate": "2023-10-10",
+                  "accreditationEmployees": 100,
+                  "accreditationNzers": 10,
+                  "aboutCompany": "about company",
+                  "gstNumber": 97647656566333,
+                  "profileCompletion": 20,
+                  "couponsConsumed": ["coupon 1", "coupon 2"],
+                  "profileUrl": "profile link",
+                  "stipeCustomerId": "customer id",
+                  "updatedAt": "timestamp",
+                  "createdAt": "timestamp"
+                }
+              ],
+              "page": 1,
+              "pageSize": 5,
+              "total": 20
+            }
+          ]
+        }
+      }
+    },
+    "notificationListingInRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "String",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "Array",
+          "example": [
+            {
+              "_id": "64aff5ed250dff800ccc74de",
+              "senderId": "646f54086561890f6cdba8a7",
+              "event": "Job Archived",
+              "log": "job title is archived by Nick Jonas",
+              "isRead": false,
+              "isDeleted": false,
+              "isVisibleToAdmin": true,
+              "createdAt": 1689253357967,
+              "updatedAt": 1689253357967,
+              "__v": 0
+            },
+            {
+              "_id": "64aff57d0686e88f2ad12f07",
+              "senderId": "646f54086561890f6cdba8a7",
+              "event": "Job Unsaved",
+              "log": "job title is unsaved by Nick Jonas",
+              "isRead": false,
+              "isDeleted": false,
+              "isVisibleToAdmin": true,
+              "createdAt": 1689253245491,
+              "updatedAt": 1689253245491,
+              "__v": 0
+            }
+          ]
+        },
+        "page": {
+          "type": "Number",
+          "example": 1
+        },
+        "perPage": {
+          "type": "Number",
+          "example": 10
+        },
+        "total": {
+          "type": "Number",
+          "example": 20
+        },
+        "extra_meta": {
+          "type": "String",
+          "example": {
+            "unreadCount": 6
+          }
+        }
+      }
+    },
+    "deleteNotificationsInReq": {
+      "required": ["ids"],
+      "properties": {
+        "ids": {
+          "type": "array",
+          "example": ["5ce25306e6405f7072059128"]
+        }
+      }
+    },
+    "deleteNotificationRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Notification deleted Successfully."
+        }
+      }
+    },
+    "notificationsDownloadInReq": {
+      "required": ["type", "column"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "csv/xlsx/pdf"
+        },
+        "column": {
+          "type": "array",
+          "example": ["event", "log", "createdAt"]
+        }
+      }
+    },
+    "notificationsDownloadInRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "filePath": ""
+          }
+        }
+      }
+    },
+    "markAsReadNotificationsInReq": {
+      "required": ["ids"],
+      "properties": {
+        "ids": {
+          "type": "array",
+          "example": ["5ce25306e6405f7072059128"]
+        }
+      }
+    },
+    "markAsReadNotificationsInRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Marked as read"
+        }
+      }
+    },
+    "shortlistApplicantListRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "array",
+          "example": [
+            {
+              "_id": "648c77ab05560e5db3533054",
+              "jobId": "64741d05956979f3d9e54a97",
+              "firstName": "Neha",
+              "lastName": "Kashyap",
+              "jobTitle": "Job Title",
+              "companyName": "Indianic",
+              "companyEmail": "neha.k@gmail.com"
+            },
+            {
+              "_id": "64ae83c4c560747c29a14df7",
+              "jobId": "64ad3c46dad3ed447d4e46bc",
+              "firstName": "Neha",
+              "lastName": "Kashyap",
+              "jobTitle": "Sr. Developer",
+              "companyName": "Samsung",
+              "companyEmail": "neha@yopmail.com"
+            }
+          ]
+        },
+        "page": {
+          "type": "number",
+          "example": 1
+        },
+        "pagesize": {
+          "type": "number",
+          "example": 10
+        },
+        "total": {
+          "type": "number",
+          "example": 10
+        },
+        "extra_meta": {
+          "type": "string",
+          "example": null
+        }
+      }
+    },
+    "totalEarningEmployerListRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "array",
+          "example": [
+            {
+              "_id": "646f431f134470f6871c1511",
+              "employerName": "Indianic",
+              "totalRevenue": 901740,
+              "jobCount": 45,
+              "companyEmail": "javascript@indianic.com",
+              "nzbn": 1234567897777
+            },
+            {
+              "_id": "64b8df7859a8214f18e6f7e3",
+              "employerName": "TRUE COLOURS TELEVISION LIMITED",
+              "totalRevenue": 523770,
+              "jobCount": 41,
+              "companyEmail": "finaldev@yopmail.com",
+              "nzbn": 9429033928661
+            }
+          ]
+        },
+        "page": {
+          "type": "number",
+          "example": 1
+        },
+        "pagesize": {
+          "type": "number",
+          "example": 10
+        },
+        "total": {
+          "type": "number",
+          "example": 10
+        },
+        "extra_meta": {
+          "type": "string",
+          "example": null
+        }
+      }
+    }
+  }
+}

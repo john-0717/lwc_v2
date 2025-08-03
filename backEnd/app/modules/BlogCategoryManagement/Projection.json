@@ -1,0 +1,12 @@
+{
+    "blogCategories": {
+        "__v": 0,
+        "isDeleted": 0
+    },
+    "list": {
+        "category": 1,
+        "color": 1,
+        "blogCategoryCode": 1,
+        "languageId": 1
+    }
+}

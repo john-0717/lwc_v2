@@ -1,0 +1,422 @@
+{
+  "paths": {
+    "/homepage/recent-job": {
+      "get": {
+        "tags": ["Home"],
+        "description": "recently added 9 jobs , 6 key words",
+        "parameters": [
+          {
+            "name": "searchText",
+            "in": "query",
+            "description": "search by using searchText",
+            "schema": {
+              "type": "String",
+              "example": "UI/UX"
+            }
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "description": "filter by location",
+            "schema": {
+              "type": "String",
+              "example": "641804483404984d4de40f06"
+            }
+          },
+          {
+            "name": "jobType",
+            "in": "query",
+            "description": "filter with job type",
+            "schema": {
+              "type": "String",
+              "example": "641804483404984d4de40f06"
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "sort the list",
+            "schema": {
+              "type": "String",
+              "example": "latest"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "schema": {
+              "type": "Number",
+              "example": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "get number of results per page",
+            "schema": {
+              "type": "Number",
+              "example": 10
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "get published jobs only",
+            "schema": {
+              "type": "String",
+              "example": "Published"
+            }
+          },
+          {
+            "name": "experience",
+            "in": "query",
+            "description": "get jobs based on experience matched jobs only",
+            "schema": {
+              "type": "String",
+              "example": "value from admin master experience list"
+            }
+          },
+          {
+            "name": "industry",
+            "in": "query",
+            "description": "get jobs based on industry matched jobs only",
+            "schema": {
+              "type": "String",
+              "example": "value from admin master industries list"
+            }
+          },
+          {
+            "name": "payRate",
+            "in": "query",
+            "description": "get jobs based on payRate from and to matched jobs only",
+            "schema": {
+              "type": "Number",
+              "example": "value from admin master payrates list (20-50)"
+            }
+          },
+          {
+            "name": "keywords",
+            "in": "query",
+            "description": "if you want to get keywords array pass true",
+            "schema": {
+              "type": "Boolean",
+              "example": "true"
+            }
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "recently added 9 jobs , total posted jobs , 6 key words",
+            "schema": {
+              "$ref": "#/definitions/home-recent-job-response"
+            }
+          }
+        }
+      }
+    },
+    "/homepage/count": {
+      "get": {
+        "tags": ["Home"],
+        "description": "partners and statistics includes total job count",
+        "parameters": [],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "partners and statistics",
+            "schema": {
+              "$ref": "#/definitions/home-page-count-response"
+            }
+          }
+        }
+      }
+    },
+    "/cms": {
+      "get": {
+        "tags": ["Home"],
+        "description": "get cms page by slug",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "query",
+            "description": "get cms by slug name",
+            "required": true,
+            "schema": {
+              "type": "String",
+              "example": "about-us"
+            }
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "get cms page by slug",
+            "schema": {
+              "$ref": "#/definitions/home-cms-page-response"
+            }
+          }
+        }
+      }
+    },
+    "/faq/list": {
+      "get": {
+        "tags": ["Home"],
+        "description": "Faq list",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "search key",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Faq list",
+            "schema": {
+              "$ref": "#/definitions/faqListingInRes"
+            }
+          }
+        }
+      }
+    },
+    "/testimonial/list": {
+      "get": {
+        "tags": ["Home"],
+        "description": "Testimonial list",
+        "parameters": [
+          
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Testimonial list",
+            "schema": {
+              "$ref": "#/definitions/testimonialListingInRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "home-recent-job-response": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": 1
+        },
+        "message": {
+          "type": "string",
+          "example": "Get Details successfully."
+        },
+        "data": {
+          "type": "Object",
+          "example": {
+            "recentJobs": [
+              {
+                "userId": "641804483404984d4de40f06",
+                "jobTitle": "job name",
+                "jobType": "full time",
+                "industry": "Finance",
+                "location": "NewZeland",
+                "salary": true,
+                "payRateFrom": 25,
+                "payRateTo": 25,
+                "hoursPerWeek": "8 hours",
+                "isBonusAllowed": true,
+                "bonusAmount": "25k",
+                "earningPerWeek": "5k",
+                "paymentFrequency": "monthly",
+                "status": "Published"
+              }
+            ],
+            "keyWords": ["key1", "key2", "key3"]
+          }
+        }
+      }
+    },
+    "home-page-count-response": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": 1
+        },
+        "message": {
+          "type": "string",
+          "example": "Get Details successfully."
+        },
+        "data": {
+          "type": "Object",
+          "example": {
+            "listing": [],
+            "totalJobs": 2,
+            "totalEmployer": 17,
+            "shortListed": 0,
+            "shortListedRatio": 0,
+            "totalApplicant": 1
+          }
+        }
+      }
+    },
+    "home-cms-page-response": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": 1
+        },
+        "message": {
+          "type": "string",
+          "example": "Get Details successfully."
+        },
+        "data": {
+          "type": "Object",
+          "example": {
+            "_id": "646e065cf0ab29ccc755c0ef",
+            "pageData": [
+              {
+                "title": "Section 1",
+                "slug": "section-1",
+                "content": "content",
+                "image": "node/fileName.webp",
+                "_id": "6479d8c4f0516d221d3eb36b"
+              }
+            ],
+            "title": "About us 2",
+            "slug": "about-us",
+            "metaTitle": "",
+            "metaDescription": "",
+            "metaKeywords": "",
+            "isDeleted": false,
+            "status": false,
+            "createdBy": "64636a92df0643afd384e9a5",
+            "createdAt": "2023-05-24T12:43:08.995Z",
+            "updatedAt": "2023-06-02T11:55:48.457Z",
+            "__v": 0,
+            "modifiedBy": "64636a92df0643afd384e9a5",
+            "deletedBy": "64636a92df0643afd384e9a5"
+          }
+        }
+      }
+    },
+    "faqListingInRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "String",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "Array",
+          "example": [
+            {
+              "_id": "64ba234e063c26e7ed99b30c",
+              "languageId": "64636a91df0643afd384e665",
+              "faqCode": "aHMuGN",
+              "question": "how are you ??",
+              "answer": "I am fine....",
+              "addedBy": "64636a92df0643afd384e9a5",
+              "status": true,
+              "isDeleted": false,
+              "createdAt": "2023-07-21T06:18:54.341Z",
+              "updatedAt": "2023-07-21T06:18:54.341Z",
+              "__v": 0
+          },
+          {
+              "_id": "64ba233b063c26e7ed99b2ed",
+              "languageId": "64636a91df0643afd384e665",
+              "faqCode": "BNGs6z",
+              "question": "how are you ?",
+              "answer": "I am fine",
+              "addedBy": "64636a92df0643afd384e9a5",
+              "status": true,
+              "isDeleted": false,
+              "createdAt": "2023-07-21T06:18:35.299Z",
+              "updatedAt": "2023-07-21T06:18:35.299Z",
+              "__v": 0
+          }
+          ]
+        },
+        "page": {
+          "type": "Number",
+          "example": 1
+        },
+        "perPage": {
+          "type": "Number",
+          "example": 10
+        },
+        "total": {
+          "type": "Number",
+          "example": 20
+        },
+        "extra_meta": {
+          "type": "String",
+          "example": null
+        }
+      }
+    },
+    "testimonialListingInRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "String",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "Array",
+          "example": [
+            {
+              "_id": "64ba21194df771a7524cd6f5",
+              "title": "testimonial 4",
+              "imageUrl": "node/2334nnnk.webp",
+              "description": "testimonial hggh",
+              "testimonialDesignation": "CEO",
+              "isDeleted": false,
+              "createdBy": "64636a92df0643afd384e9a5",
+              "createdAt": 1689919769908,
+              "updatedAt": 1689919769908,
+              "__v": 0
+          },
+          {
+            "_id": "64ba21194df771a7524cd6f5",
+            "title": "testimonial 4",
+            "imageUrl": "node/2334nnnk.webp",
+            "description": "testimonial hggh",
+            "testimonialDesignation": "CEO",
+            "isDeleted": false,
+            "createdBy": "64636a92df0643afd384e9a5",
+            "createdAt": 1689919769908,
+            "updatedAt": 1689919769908,
+            "__v": 0
+        }
+          ]
+        }        
+      }
+    }
+  }
+}

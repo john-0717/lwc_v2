@@ -1,0 +1,532 @@
+{
+  "paths": {
+    "/faq-categories": {
+      "post": {
+        "tags": [
+          "Faq Categories"
+        ],
+        "description": "Faq Categories Add/Edit (use faqCategoryId only for Edit Faq Categories)",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Faq Categories Add/Edit",
+            "schema": {
+              "$ref": "#/definitions/faqCategoriesAddEditReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Faq Categories Add/Edit Response",
+            "schema": {
+              "$ref": "#/definitions/faqCategoriesAddEditRes"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Faq Categories"
+        ],
+        "description": "Faq Categories Change Status",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Faq Categories Change Status",
+            "schema": {
+              "$ref": "#/definitions/faqCategoriesChangeStatusReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Faq Categories Change Status Response",
+            "schema": {
+              "$ref": "#/definitions/faqCategoriesChangeStatusRes"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Faq Categories"
+        ],
+        "description": "Faq Categories Delete",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Faq Categories Delete",
+            "schema": {
+              "$ref": "#/definitions/faqCategoriesDeleteReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Faq Categories Delete Response",
+            "schema": {
+              "$ref": "#/definitions/faqCategoriesDeleteRes"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Faq Categories"
+        ],
+        "description": "Get Faq Categories details",
+        "parameters": [
+          {
+            "name": "faqCategoryCode",
+            "in": "query",
+            "description": "faqCategoryCode",
+            "required": true
+          },
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Faq Categories details are.",
+            "schema": {
+              "$ref": "#/definitions/GetfaqCategoriesDetailsRes"
+            }
+          }
+        }
+      }
+    },
+    "/faq-categories/listing": {
+      "post": {
+        "tags": [
+          "Faq Categories"
+        ],
+        "description": "Faq Categories Listing",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Faq Categories Listing",
+            "schema": {
+              "$ref": "#/definitions/faqCategoriesListingReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Faq Categories details are.",
+            "schema": {
+              "$ref": "#/definitions/faqCategoriesListingRes"
+            }
+          }
+        }
+      }
+    },
+    "/faq-categories/dropdown": {
+      "get": {
+        "tags": [
+          "Faq Categories"
+        ],
+        "description": "Get Faq Categories List for add faq Category dropdown",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Faq Categories details are.",
+            "schema": {
+              "$ref": "#/definitions/GetfaqCategoriesListRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "faqCategoriesAddEditReq": {
+      "required": [
+        "faqCategoryId",
+        "languageId",
+        "faqCategoryCode",
+        "category"
+      ],
+      "properties": {
+        "faqCategoryId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "languageId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "faqCategoryCode": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "category": {
+          "type": "string",
+          "example": "test",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "faqCategoriesAddEditRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Faq Categories Added Successfully."
+        }
+      }
+    },
+    "faqCategoriesListingReq": {
+      "required": [
+        "page",
+        "pagesize"
+      ],
+      "properties": {
+        "page": {
+          "type": "number",
+          "example": "1",
+          "required": true
+        },
+        "pagesize": {
+          "type": "number",
+          "example": "10",
+          "required": true
+        },
+        "searchText": {
+          "type": "string",
+          "example": "",
+          "required": true
+        }
+      }
+    },
+    "faqCategoriesListingRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "page": {
+          "type": "number",
+          "example": "1"
+        },
+        "perPage": {
+          "type": "number",
+          "example": "10"
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "listing": [
+              {
+                "_id": "63b5850c7f630e16e6c211d8",
+                "languageId": "638f115f32ea140479188335",
+                "category": "test",
+                "status": true
+              }
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": "1"
+        }
+      }
+    },
+    "faqCategoriesDeleteReq": {
+      "required": [
+        "faqCategoriesIds"
+      ],
+      "properties": {
+        "faqCategoriesIds": {
+          "example": [
+            "5ce25306e6405f7072059128",
+            "5ce25320e6405f707205912f"
+          ],
+          "type": "array"
+        }
+      }
+    },
+    "faqCategoriesDeleteRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Faq Categories Deleted Successfully."
+        }
+      }
+    },
+    "faqCategoriesChangeStatusReq": {
+      "required": [
+        "faqCategoriesIds",
+        "status"
+      ],
+      "properties": {
+        "faqCategoriesIds": {
+          "example": [
+            "5ce25306e6405f7072059128",
+            "5ce25320e6405f707205912f"
+          ],
+          "type": "array"
+        },
+        "status": {
+          "example": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "faqCategoriesChangeStatusRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Status update successfully."
+        }
+      }
+    },
+    "GetfaqCategoriesDetailsRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "_id": "63b5850c7f630e16e6c211d8",
+            "languageId": "638f115f32ea140479188335",
+            "category": "test",
+            "slug": "test",
+            "metaKeywords": "test",
+            "tags": "test",
+            "postDateTime": "2023-01-03T11:55:45.629Z",
+            "addedBy": "63a1621355ad54f5f2cf1601",
+            "status": true
+          }
+        }
+      }
+    },
+    "GetfaqCategoriesListRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": [
+            {
+              "_id": "637607821df5fdf83c35cdaa",
+              "category": "test"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

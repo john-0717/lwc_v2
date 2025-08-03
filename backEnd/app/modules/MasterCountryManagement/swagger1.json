@@ -1,0 +1,618 @@
+{
+  "paths": {
+    "/master/country": {
+      "post": {
+        "tags": [
+          "Master"
+        ],
+        "description": "Countries Add/Edit (use countryid only for Edit Country)",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Countries Add/Edit",
+            "schema": {
+              "$ref": "#/definitions/CountryAddEditReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Country Add/Edit Response",
+            "schema": {
+              "$ref": "#/definitions/CountryAddEditRes"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Master"
+        ],
+        "description": "Countries Change Status",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Countries Change Status",
+            "schema": {
+              "$ref": "#/definitions/CountryChangeStatusReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Country Change Status Response",
+            "schema": {
+              "$ref": "#/definitions/CountryChangeStatusRes"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Master"
+        ],
+        "description": "Countries Delete",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Countries Delete",
+            "schema": {
+              "$ref": "#/definitions/CountryDeleteReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Country Delete Response",
+            "schema": {
+              "$ref": "#/definitions/CountryDeleteRes"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Master"
+        ],
+        "description": "Get Countries List for Select Dropdown In Master Timezone and Language Module",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Country details are.",
+            "schema": {
+              "$ref": "#/definitions/GetCountryListRes"
+            }
+          }
+        }
+      }
+    },
+    "/master/country/listing": {
+      "post": {
+        "tags": [
+          "Master"
+        ],
+        "description": "Countries Listing",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Countries Listing",
+            "schema": {
+              "$ref": "#/definitions/CountryListingReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Country details are.",
+            "schema": {
+              "$ref": "#/definitions/CountryListingRes"
+            }
+          }
+        }
+      }
+    },
+    "/master/country/{countryId}": {
+      "get": {
+        "tags": [
+          "Master"
+        ],
+        "description": "Get Country details",
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "countryId",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Country details are.",
+            "schema": {
+              "$ref": "#/definitions/GetCountryDetailsRes"
+            }
+          }
+        }
+      }
+    },
+    "/master/currency": {
+      "get": {
+        "tags": [
+          "Master"
+        ],
+        "description": "Get currencyList List for Select Dropdown currencyList",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Country details are.",
+            "schema": {
+              "$ref": "#/definitions/GetCurrencyListRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CountryAddEditReq": {
+      "required": [
+        "countryName",
+        "countryCode",
+        "phoneCode",
+        "currency",
+        "countryId"
+      ],
+      "properties": {
+        "countryId": {
+          "type": "string",
+          "example": "630788c73e3cc30012c7aafa",
+          "uniqueItems": true,
+          "required": true,
+          "description": "use this field only for Edit Country"
+        },
+        "countryName": {
+          "type": "string",
+          "example": "India",
+          "uniqueItems": true,
+          "required": true
+        },
+        "countryCode": {
+          "type": "string",
+          "example": "IN",
+          "uniqueItems": true,
+          "required": true
+        },
+        "phoneCode": {
+          "type": "string",
+          "example": "+91",
+          "uniqueItems": true,
+          "required": true
+        },
+        "currency": {
+          "type": "string",
+          "example": "INR",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "CountryAddEditRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Country Added Successfully."
+        }
+      }
+    },
+    "CountryListingReq": {
+      "required": [
+        "page",
+        "pagesize"
+      ],
+      "properties": {
+        "page": {
+          "type": "number",
+          "example": "1",
+          "required": true
+        },
+        "pagesize": {
+          "type": "number",
+          "example": "10",
+          "required": true
+        },
+        "filter": {
+          "type": "object",
+          "example": [
+            {
+              "countryName": [
+                ""
+              ]
+            }
+          ],
+          "required": true
+        },
+        "sort": {
+          "type": "object",
+          "example": {
+            "countryName": 1
+          },
+          "required": true
+        },
+        "searchText": {
+          "type": "string",
+          "example": "India",
+          "required": true
+        }
+      }
+    },
+    "CountryListingRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "page": {
+          "type": "number",
+          "example": "1"
+        },
+        "perPage": {
+          "type": "number",
+          "example": "10"
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "listing": [
+              {
+                "_id": "6376153b1df5fdf83c35cdab",
+                "countryName": "India",
+                "countryCode": "IN",
+                "phoneCode": "+91",
+                "currency": "INR",
+                "status": true
+              }
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": "1"
+        }
+      }
+    },
+    "CountryDeleteReq": {
+      "required": [
+        "countriesIds"
+      ],
+      "properties": {
+        "countriesIds": {
+          "example": [
+            "5ce25306e6405f7072059128",
+            "5ce25320e6405f707205912f"
+          ],
+          "type": "array"
+        }
+      }
+    },
+    "CountryDeleteRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Country Deleted Successfully."
+        }
+      }
+    },
+    "CountryChangeStatusReq": {
+      "required": [
+        "countriesIds",
+        "status"
+      ],
+      "properties": {
+        "countriesIds": {
+          "example": [
+            "5ce25306e6405f7072059128",
+            "5ce25320e6405f707205912f"
+          ],
+          "type": "array"
+        },
+        "status": {
+          "example": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "CountryChangeStatusRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Status update successfully."
+        }
+      }
+    },
+    "GetCountryDetailsRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "_id": "637607821df5fdf83c35cdaa",
+            "countryName": "India",
+            "countryCode": "IN",
+            "phoneCode": "+91",
+            "currency": "INR",
+            "status": false
+          }
+        }
+      }
+    },
+    "GetCountryListRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": [
+            {
+              "_id": "637607821df5fdf83c35cdaa",
+              "countryName": "India",
+              "countryCode": "IN"
+            }
+          ]
+        }
+      }
+    },
+    "GetCurrencyListRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": [
+            {
+              "_id": "63a57a347fca9d9b581df412",
+              "currency": "JPN"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

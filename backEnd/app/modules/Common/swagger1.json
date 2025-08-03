@@ -1,0 +1,550 @@
+{
+  "paths": {
+    "/common/filter": {
+      "post": {
+        "tags": [
+          "Common"
+        ],
+        "description": "Save Filter Data (use Key 'adminUserList' for Admin User Filter Save,'userList' for User Filter Save)",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Save Filter",
+            "schema": {
+              "$ref": "#/definitions/saveFilterAddEditReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Save Filter Response",
+            "schema": {
+              "$ref": "#/definitions/saveFilterAddEditRes"
+            }
+          }
+        }
+      }
+    },
+    "/common/filter/{key}": {
+      "get": {
+        "tags": [
+          "Common"
+        ],
+        "description": "Pass key 'adminUserList' for Admin User Filter Save,'userList' for User Filter Save",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "description": "key",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Filter details are.",
+            "schema": {
+              "$ref": "#/definitions/getFilterListingRes"
+            }
+          }
+        }
+      }
+    },
+    "/common/filter/{filterId}": {
+      "delete": {
+        "tags": [
+          "Common"
+        ],
+        "description": "Delete Filter",
+        "parameters": [
+          {
+            "name": "filterId",
+            "in": "path",
+            "description": "filterId",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Filter details are.",
+            "schema": {
+              "$ref": "#/definitions/DeleteFilterRes"
+            }
+          }
+        }
+      }
+    },
+    "/common/column": {
+      "post": {
+        "tags": [
+          "Common"
+        ],
+        "description": "Save Column Settings Data (use Key 'adminUserList' for Admin User Column Save,'userList' for User Column Save)",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Save Column",
+            "schema": {
+              "$ref": "#/definitions/saveColumnAddEditReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Save Column Response",
+            "schema": {
+              "$ref": "#/definitions/saveColumnAddEditRes"
+            }
+          }
+        }
+      }
+    },
+    "/common/column/{key}": {
+      "get": {
+        "tags": [
+          "Common"
+        ],
+        "description": "Pass key 'adminUserList' for Admin User Column Save,'userList' for User Column Save",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "description": "key",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Column details are.",
+            "schema": {
+              "$ref": "#/definitions/getColumnListingRes"
+            }
+          }
+        }
+      }
+    },
+    "/common/column/{columnId}": {
+      "delete": {
+        "tags": [
+          "Common"
+        ],
+        "description": "Delete Column",
+        "parameters": [
+          {
+            "name": "columnId",
+            "in": "path",
+            "description": "columnId",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Column details are.",
+            "schema": {
+              "$ref": "#/definitions/DeleteColumnRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "saveFilterAddEditReq": {
+      "required": [
+        "key",
+        "filterName",
+        "filter"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "filterName": {
+          "type": "string",
+          "example": "Admin",
+          "uniqueItems": true,
+          "required": true
+        },
+        "filter": {
+          "type": "array",
+          "example": "[]",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "saveFilterAddEditRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Filter saved successfully."
+        }
+      }
+    },
+    "getFilterListingReq": {
+      "required": [
+        "key"
+      ],
+      "properties": {
+        "key": {
+          "type": "number",
+          "example": "",
+          "required": true
+        }
+      }
+    },
+    "getFilterListingRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "page": {
+          "type": "number",
+          "example": "1"
+        },
+        "perPage": {
+          "type": "number",
+          "example": "10"
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "listing": [
+              {
+                "_id": "63be8404e32812c0ad0393a8",
+                "filterName": "Admin",
+                "filter": [
+                  {
+                    "key": "emailId",
+                    "type": "contains",
+                    "value": "rc@mailinator.com",
+                    "condition": "$and"
+                  },
+                  {
+                    "key": "firstname",
+                    "type": "contains",
+                    "value": "rc",
+                    "condition": "$and"
+                  },
+                  {
+                    "key": "dateofbirth",
+                    "type": "date",
+                    "value": {
+                      "startDate": "2023-01-03",
+                      "endDate": "2023-01-06"
+                    },
+                    "condition": "$and"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": "1"
+        }
+      }
+    },
+    "DeleteFilterRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Filter deleted successfully."
+        }
+      }
+    },
+    "saveColumnAddEditReq": {
+      "required": [
+        "key",
+        "name",
+        "column"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "example": "Admin",
+          "uniqueItems": true,
+          "required": true
+        },
+        "column": {
+          "type": "array",
+          "example": "[]",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "saveColumnAddEditRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Column Settings saved successfully."
+        }
+      }
+    },
+    "getColumnListingReq": {
+      "required": [
+        "key"
+      ],
+      "properties": {
+        "key": {
+          "type": "number",
+          "example": "",
+          "required": true
+        }
+      }
+    },
+    "getColumnListingRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "page": {
+          "type": "number",
+          "example": "1"
+        },
+        "perPage": {
+          "type": "number",
+          "example": "10"
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "listing": [
+              {
+                "_id": "64114724ef89cebf547627a1",
+                "name": "test",
+                "column": [
+                  "firstname"
+                ]
+              }
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": "1"
+        }
+      }
+    },
+    "DeleteColumnRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Column Settings deleted successfully."
+        }
+      }
+    }
+  }
+}

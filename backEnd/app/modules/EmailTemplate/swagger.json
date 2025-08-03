@@ -1,0 +1,1318 @@
+{
+  "paths": {
+    "/email-template": {
+      "post": {
+        "tags": ["Email Template"],
+        "description": "Email Template Add",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Email Template Add",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplateAddReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Email Template Add Response",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplateAddRes"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Email Template"],
+        "description": "Email Template Delete",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Email Template Delete",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplateDeleteReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Email Template Delete Response",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplateDeleteRes"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Email Template"],
+        "description": "Get Email Template details",
+        "parameters": [
+          {
+            "name": "emailKey",
+            "in": "query",
+            "description": "emailKey",
+            "required": true
+          },
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Email Template details are.",
+            "schema": {
+              "$ref": "#/definitions/GetEmailTemplateDetailsRes"
+            }
+          }
+        }
+      }
+    },
+    "/campaign-template/add": {
+      "post": {
+        "tags": ["Email Template"],
+        "description": "Email Campaign Template Add",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Email Campaign Template Add",
+            "schema": {
+              "$ref": "#/definitions/CampaignEmailTemplateAddReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Campaign Email Template Add Response",
+            "schema": {
+              "$ref": "#/definitions/CampaignEmailTemplateAddRes"
+            }
+          }
+        }
+      }
+    },
+    "/campaign-template/edit": {
+      "post": {
+        "tags": ["Email Template"],
+        "description": "Email Campaign Template Edit",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Email Campaign Template Edit",
+            "schema": {
+              "$ref": "#/definitions/CampaignEmailTemplateEditReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Campaign Email Template Edit Response",
+            "schema": {
+              "$ref": "#/definitions/CampaignEmailTemplateEditRes"
+            }
+          }
+        }
+      }
+    },
+    "/campaign-template/delete": {
+      "delete": {
+        "tags": ["Email Template"],
+        "description": "Email Campaign Template Delete",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Email Campaign Template Delete",
+            "schema": {
+              "$ref": "#/definitions/CampaignEmailTemplateDeleteReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Campaign Email Template Delete Response",
+            "schema": {
+              "$ref": "#/definitions/CampaignEmailTemplateDeleteRes"
+            }
+          }
+        }
+      }
+    },
+    "/campaign-template/change-status": {
+      "patch": {
+        "tags": ["Email Template"],
+        "description": "Email Template Change Status",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Email Template Change Status",
+            "schema": {
+              "$ref": "#/definitions/campaignEmailTemplateChangeStatusReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Email Template Change Status Response",
+            "schema": {
+              "$ref": "#/definitions/campaignEmailTemplateChangeStatusRes"
+            }
+          }
+        }
+      }
+    },
+    "/campaign-template": {
+      "get": {
+        "tags": ["Email Template"],
+        "description": "campaign template details with preview",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceId",
+            "in": "header",
+            "description": "web",
+            "schema": {
+              "type": "String",
+              "example": "web"
+            },
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "document id of campaign template (_id)",
+            "schema": {
+              "type": "String",
+              "example": "64af962043b7a8adc46aed7e"
+            },
+            "required": true
+          },
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "language id",
+            "schema": {
+              "type": "String",
+              "example": "6461b9c495836f0b01e75ec7"
+            }
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "campaign template details with preview",
+            "schema": {
+              "$ref": "#/definitions/campaignTemplateDetailsInRes"
+            }
+          }
+        }
+      }
+    },
+    "/campaign-template/listing": {
+      "post": {
+        "tags": ["Email Template"],
+        "description": "Email Campaign Template Edit",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Email Campaign Template Listing",
+            "schema": {
+              "$ref": "#/definitions/CampaignEmailTemplateListReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Campaign Email Template Listing Response",
+            "schema": {
+              "$ref": "#/definitions/CampaignEmailTemplateListRes"
+            }
+          }
+        }
+      }
+    },
+    "/email-template/{id}": {
+      "put": {
+        "tags": ["Email Template"],
+        "description": "Email Template Edit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Email Template Add",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplateEditReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Email Template Edit Response",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplateEditRes"
+            }
+          }
+        }
+      }
+    },
+    "/email-template/listing": {
+      "post": {
+        "tags": ["Email Template"],
+        "description": "Email Template Listing",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Email Template Listing",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplateListingReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Email Template details are.",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplateListingRes"
+            }
+          }
+        }
+      }
+    },
+    "/email-template/change-status": {
+      "patch": {
+        "tags": ["Email Template"],
+        "description": "Email Template Change Status",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Email Template Change Status",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplateChangeStatusReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Email Template Change Status Response",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplateChangeStatusRes"
+            }
+          }
+        }
+      }
+    },
+    "/campaign-template/send": {
+      "get": {
+        "tags": ["Email Template"],
+        "description": "campaign template details with preview",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceId",
+            "in": "header",
+            "description": "web",
+            "schema": {
+              "type": "String",
+              "example": "web"
+            },
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "document id of campaign template (_id)",
+            "schema": {
+              "type": "String",
+              "example": "64af962043b7a8adc46aed7e"
+            },
+            "required": true
+          },
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "language id",
+            "schema": {
+              "type": "String",
+              "example": "6461b9c495836f0b01e75ec7"
+            }
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "campaign template details with preview",
+            "schema": {
+              "$ref": "#/definitions/campaignTemplateSendInRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "EmailTemplateAddReq": {
+      "required": [
+        "languageId",
+        "emailKey",
+        "emailTitle",
+        "subject",
+        "emailContent"
+      ],
+      "properties": {
+        "languageId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true,
+          "description": "use this field only for Edit Country"
+        },
+        "emailKey": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true,
+          "description": "use this field only for Edit Country"
+        },
+        "emailTitle": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "subject": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "emailContent": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "CampaignEmailTemplateAddReq": {
+      "required": [
+        "languageId",
+        "title",
+        "campaignSubject",
+        "heading",
+        "leftImage",
+        "description",
+        "footer",
+        "applicantColor",
+        "employerColor",
+        "sendTo"
+      ],
+      "properties": {
+        "languageId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true,
+          "description": "language id"
+        },
+        "title": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true,
+          "description": "title of news Letter/campaign"
+        },
+        "campaignSubject": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "heading": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "leftImage": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "footer": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "applicantColor": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "employerColor": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "sendTo": {
+          "type": "Array",
+          "example": "['Applicant','Employer']",
+          "required": true
+        },
+        "buttons": {
+          "type": "Array",
+          "example": "[{button:'name',link:'link to page'}]"
+        },
+        "topic1": {
+          "type": "String",
+          "example": "topic1 description html"
+        },
+        "topic2": {
+          "type": "String",
+          "example": "topic2 description html"
+        },
+        "topic3": {
+          "type": "String",
+          "example": "topic3 description html"
+        }
+      }
+    },
+    "CampaignEmailTemplateAddRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Email Template Added Successfully."
+        }
+      }
+    },
+    "CampaignEmailTemplateEditReq": {
+      "required": [
+        "id",
+        "languageId",
+        "title",
+        "campaignSubject",
+        "heading",
+        "leftImage",
+        "description",
+        "footer",
+        "applicantColor",
+        "employerColor",
+        "sendTo"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true,
+          "description": "document id"
+        },
+        "languageId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true,
+          "description": "language id"
+        },
+        "title": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true,
+          "description": "title of news Letter/campaign"
+        },
+        "campaignSubject": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "heading": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "leftImage": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "footer": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "applicantColor": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "employerColor": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "sendTo": {
+          "type": "Array",
+          "example": "['Applicant','Employer']",
+          "required": true
+        },
+        "buttons": {
+          "type": "Array",
+          "example": "[{button:'name',link:'link to page'}]"
+        },
+        "topic1": {
+          "type": "String",
+          "example": "topic1 description html"
+        },
+        "topic2": {
+          "type": "String",
+          "example": "topic2 description html"
+        },
+        "topic3": {
+          "type": "String",
+          "example": "topic3 description html"
+        }
+      }
+    },
+    "CampaignEmailTemplateEditRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Email Template updated Successfully."
+        }
+      }
+    },
+    "CampaignEmailTemplateDeleteReq": {
+      "required": ["campaignIds"],
+      "properties": {
+        "campaignIds": {
+          "type": "array",
+          "example": "['64af94a6cf974a593c64fa54']",
+          "uniqueItems": true,
+          "required": true,
+          "description": "document id"
+        }
+      }
+    },
+    "CampaignEmailTemplateDeleteRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Email template deleted successfully."
+        }
+      }
+    },
+    "EmailTemplateAddRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Email Template Added Successfully."
+        }
+      }
+    },
+    "EmailTemplateEditReq": {
+      "required": ["emailTitle", "subject", "emailContent"],
+      "properties": {
+        "emailTitle": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "subject": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "emailContent": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "EmailTemplateEditRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Email Template Updated Successfully."
+        }
+      }
+    },
+    "EmailTemplateListingReq": {
+      "required": ["page", "pagesize"],
+      "properties": {
+        "languageId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true,
+          "description": "use this field only for Edit Country"
+        },
+        "page": {
+          "type": "number",
+          "example": "1",
+          "required": true
+        },
+        "pagesize": {
+          "type": "number",
+          "example": "10",
+          "required": true
+        },
+        "searchText": {
+          "type": "string",
+          "example": "India",
+          "required": true
+        }
+      }
+    },
+    "EmailTemplateListingRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "page": {
+          "type": "number",
+          "example": "1"
+        },
+        "perPage": {
+          "type": "number",
+          "example": "10"
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "listing": [
+              {
+                "_id": "6376153b1df5fdf83c35cdab",
+                "countryName": "India",
+                "countryCode": "IN",
+                "phoneCode": "+91",
+                "currency": "INR",
+                "status": true
+              }
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": "1"
+        }
+      }
+    },
+    "EmailTemplateDeleteReq": {
+      "required": ["emailIds"],
+      "properties": {
+        "emailIds": {
+          "example": ["5ce25306e6405f7072059128", "5ce25320e6405f707205912f"],
+          "type": "array"
+        }
+      }
+    },
+    "EmailTemplateDeleteRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Email Template Deleted Successfully."
+        }
+      }
+    },
+    "EmailTemplateChangeStatusReq": {
+      "required": ["emailIds", "status"],
+      "properties": {
+        "emailIds": {
+          "example": ["5ce25306e6405f7072059128", "5ce25320e6405f707205912f"],
+          "type": "array"
+        },
+        "status": {
+          "example": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "EmailTemplateChangeStatusRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Status update successfully."
+        }
+      }
+    },
+    "GetEmailTemplateDetailsRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "_id": "637607821df5fdf83c35cdaa",
+            "countryName": "India",
+            "countryCode": "IN",
+            "phoneCode": "+91",
+            "currency": "INR",
+            "status": false
+          }
+        }
+      }
+    },
+    "campaignEmailTemplateChangeStatusRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Status update successfully."
+        }
+      }
+    },
+    "campaignEmailTemplateChangeStatusReq": {
+      "required": ["campaignIds", "status"],
+      "properties": {
+        "emailIds": {
+          "example": ["5ce25306e6405f7072059128", "5ce25320e6405f707205912f"],
+          "type": "array"
+        },
+        "status": {
+          "example": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "campaignTemplateDetailsInRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "_id": "64af962043b7a8adc46aed7e",
+            "languageId": "6461b9c495836f0b01e75ec7",
+            "title": "test-4",
+            "campaignSubject": "test",
+            "buttons": [
+              {
+                "button": "test",
+                "link": "https://google.com",
+                "_id": "64af9d73d82d1dec1089f617"
+              }
+            ],
+            "heading": "John Wick",
+            "leftImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCTUFk2kHItfjOJaRLBVj5EN2vJ3yHtV0lbL73JydkrQ&s",
+            "description": "test description",
+            "topic1": "test topic1",
+            "topic2": "test topic2",
+            "topic3": "test topic3",
+            "footer": "test footer",
+            "fbUrl": "https://www.facebook.com/",
+            "twitterUrl": "https://www.twitter.com/",
+            "linkedinUrl": "https://www.linkedin.com/",
+            "instagramUrl": "https://www.instagram.com/",
+            "email": "test123@gmail.com",
+            "address": "Sky Tower Victoria Street West, Auckland CBD, Auckland, New Zealand",
+            "phone": "9652252145",
+            "status": true,
+            "applicantColor": "#eeeeee",
+            "employerColor": "#dedede",
+            "sendTo": ["Applicant"],
+            "createdBy": {
+              "_id": "6461b9c695836f0b01e76207",
+              "firstname": "Admin",
+              "lastname": "Admin"
+            },
+            "createdAt": 1689228832941,
+            "updatedAt": 1689230707651,
+            "previewTemplate": "<!DOCTYPE html><html lang=\"en\"><head></heade></html>"
+          }
+        }
+      }
+    },
+    "CampaignEmailTemplateListReq": {
+      "required": ["page", "pagesize", "languageId"],
+      "properties": {
+        "page": {
+          "type": "Number",
+          "example": 1,
+          "uniqueItems": true,
+          "required": true
+        },
+        "pagesize": {
+          "type": "Number",
+          "example": 10,
+          "uniqueItems": true,
+          "required": true
+        },
+        "languageId": {
+          "type": "string",
+          "example": "64af9d73d82d1dec1089f617",
+          "uniqueItems": true,
+          "required": true
+        },
+        "searchText": {
+          "type": "string",
+          "example": "campaign-1"
+        }
+      }
+    },
+    "CampaignEmailTemplateListRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Email Template Updated Successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "listing": [
+              {
+                "_id": "64af962043b7a8adc46aed7e",
+                "languageId": "6461b9c495836f0b01e75ec7",
+                "title": "test-4",
+                "campaignSubject": "test",
+                "buttons": [
+                  {
+                    "button": "test",
+                    "link": "https://google.com",
+                    "_id": "64af9d73d82d1dec1089f617"
+                  }
+                ],
+                "heading": "John Wick",
+                "leftImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCTUFk2kHItfjOJaRLBVj5EN2vJ3yHtV0lbL73JydkrQ&s",
+                "description": "test description",
+                "topic1": "test topic1",
+                "topic2": "test topic2",
+                "topic3": "test topic3",
+                "footer": "test footer",
+                "fbUrl": "https://www.facebook.com/",
+                "twitterUrl": "https://www.twitter.com/",
+                "linkedinUrl": "https://www.linkedin.com/",
+                "instagramUrl": "https://www.instagram.com/",
+                "email": "test123@gmail.com",
+                "address": "Sky Tower Victoria Street West, Auckland CBD, Auckland, New Zealand",
+                "phone": "9652252145",
+                "status": true,
+                "applicantColor": "#eeeeee",
+                "employerColor": "#dedede",
+                "sendTo": ["Applicant"],
+                "createdBy": {
+                  "_id": "6461b9c695836f0b01e76207",
+                  "firstname": "Admin",
+                  "lastname": "Admin"
+                },
+                "createdAt": 1689228832941,
+                "updatedAt": 1689230707651,
+                "previewTemplate": "<!DOCTYPE html><html lang=\"en\"><head></heade></html>"
+              }
+            ],
+            "page": 1,
+            "perPage": 10,
+            "total": 2,
+            "extra_meta": null
+          }
+        }
+      }
+    },
+    "campaignTemplateSendInRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Emails are in queue."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,625 @@
+{
+  "paths": {
+    "/blog-categories": {
+      "post": {
+        "tags": [
+          "Blog Categories"
+        ],
+        "description": "Blog Categories Add/Edit (use blogCategoriesId only for Edit Blog Categories)",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Blog Categories Add/Edit",
+            "schema": {
+              "$ref": "#/definitions/BlogCategoriesAddEditReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Blog Categories Add/Edit Response",
+            "schema": {
+              "$ref": "#/definitions/BlogCategoriesAddEditRes"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Blog Categories"
+        ],
+        "description": "Blog Categories Change Status",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Blog Categories Change Status",
+            "schema": {
+              "$ref": "#/definitions/BlogCategoriesChangeStatusReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Blog Categories Change Status Response",
+            "schema": {
+              "$ref": "#/definitions/BlogCategoriesChangeStatusRes"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Blog Categories"
+        ],
+        "description": "Blog Categories Delete",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Blog Categories Delete",
+            "schema": {
+              "$ref": "#/definitions/BlogCategoriesDeleteReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Blog Categories Delete Response",
+            "schema": {
+              "$ref": "#/definitions/BlogCategoriesDeleteRes"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Blog Categories"
+        ],
+        "description": "Get Blog Categories details",
+        "parameters": [
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "blogCategoryCode",
+            "in": "query",
+            "description": "blogCategoryCode",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Blog Categories details are.",
+            "schema": {
+              "$ref": "#/definitions/GetBlogCategoriesDetailsRes"
+            }
+          }
+        }
+      }
+    },
+    "/blog-categories/listing": {
+      "post": {
+        "tags": [
+          "Blog Categories"
+        ],
+        "description": "Blog Categories Listing",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Blog Categories Listing",
+            "schema": {
+              "$ref": "#/definitions/BlogCategoriesListingReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Blog Categories details are.",
+            "schema": {
+              "$ref": "#/definitions/BlogCategoriesListingRes"
+            }
+          }
+        }
+      }
+    },
+    "/blog-categories/dropdown": {
+      "get": {
+        "tags": [
+          "Blog Categories"
+        ],
+        "description": "Get Blog Categories List for add Category dropdown",
+        "parameters": [
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Blog Categories details are.",
+            "schema": {
+              "$ref": "#/definitions/GetBlogCategoriesListRes"
+            }
+          }
+        }
+      }
+    },
+    "/blog-categories/download/{type}": {
+      "get": {
+        "tags": [
+          "Blog Categories"
+        ],
+        "description": "Download Blog Categories Details type:'excel/csv'",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "type",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Blog Categories details are.",
+            "schema": {
+              "$ref": "#/definitions/GetBlogCategoryDownloadDetailsRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "BlogCategoriesAddEditReq": {
+      "required": [
+        "blogCategoriesId",
+        "category",
+        "color",
+        "blogCategoryCode",
+        "languageId"
+      ],
+      "properties": {
+        "blogCategoriesId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "languageId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "blogCategoryCode": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "category": {
+          "type": "string",
+          "example": "test",
+          "uniqueItems": true,
+          "required": true
+        },
+        "color": {
+          "type": "string",
+          "example": "#000000",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "BlogCategoriesAddEditRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "BlogCategories Added Successfully."
+        }
+      }
+    },
+    "BlogCategoriesListingReq": {
+      "required": [
+        "page",
+        "pagesize",
+        "languageId"
+      ],
+      "properties": {
+        "languageId": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "page": {
+          "type": "number",
+          "example": "1",
+          "required": true
+        },
+        "pagesize": {
+          "type": "number",
+          "example": "10",
+          "required": true
+        },
+        "searchText": {
+          "type": "string",
+          "example": "",
+          "required": true
+        }
+      }
+    },
+    "BlogCategoriesListingRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "page": {
+          "type": "number",
+          "example": "1"
+        },
+        "perPage": {
+          "type": "number",
+          "example": "10"
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "listing": [
+              {
+                "_id": "63f3819bafc37be634fc46ad",
+                "category": "test",
+                "status": true,
+                "color": "#000000",
+                "count": 8,
+                "createdAt": "2023-02-20T14:20:11.836Z"
+              }
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": "1"
+        }
+      }
+    },
+    "BlogCategoriesDeleteReq": {
+      "required": [
+        "blogCategoriesIds"
+      ],
+      "properties": {
+        "blogCategoriesIds": {
+          "example": [
+            "5ce25306e6405f7072059128",
+            "5ce25320e6405f707205912f"
+          ],
+          "type": "array"
+        }
+      }
+    },
+    "BlogCategoriesDeleteRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Blog Categories Deleted Successfully."
+        }
+      }
+    },
+    "BlogCategoriesChangeStatusReq": {
+      "required": [
+        "blogCategoriesIds",
+        "status"
+      ],
+      "properties": {
+        "blogCategoriesIds": {
+          "example": [
+            "5ce25306e6405f7072059128",
+            "5ce25320e6405f707205912f"
+          ],
+          "type": "array"
+        },
+        "status": {
+          "example": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "BlogCategoriesChangeStatusRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Status update successfully."
+        }
+      }
+    },
+    "GetBlogCategoriesDetailsRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "_id": "63b5850c7f630e16e6c211d8",
+            "languageId": "638f115f32ea140479188335",
+            "category": "test",
+            "addedBy": "63a1621355ad54f5f2cf1601",
+            "status": true
+          }
+        }
+      }
+    },
+    "GetBlogCategoriesListRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": [
+            {
+              "_id": "637607821df5fdf83c35cdaa",
+              "category": "test"
+            }
+          ]
+        }
+      }
+    },
+    "GetBlogCategoryDownloadDetailsRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "filePathAndName": "blog-category-excel-1676710213373.xlsx"
+          }
+        }
+      }
+    }
+  }
+}

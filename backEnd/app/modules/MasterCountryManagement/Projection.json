@@ -1,0 +1,15 @@
+{
+    "country": {
+        "__v": 0,
+        "updatedAt": 0,
+        "createdAt": 0,
+        "isDeleted": 0
+    },
+    "list": {
+        "countryName": 1,
+        "countryCode": 1
+    },
+    "currencyList": {
+        "currency": 1
+    }
+}

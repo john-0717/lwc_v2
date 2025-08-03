@@ -20,9 +20,9 @@ const Header: React.FC<HeaderProps> = ({ isAdmin, setIsAdmin, userRole }) => {
   const navItems = [
     { path: '/', label: 'Home', icon: Home },
     { path: '/community', label: 'Community', icon: Users },
-    // { path: '/discussions', label: 'Discussions', icon: MessageCircle },
+    { path: '/discussions', label: 'Discussions', icon: MessageCircle },
     { path: '/prayer', label: 'Prayer', icon: Heart },
-    // { path: '/resources', label: 'Resources', icon: BookOpen },
+    { path: '/resources', label: 'Resources', icon: BookOpen },
   ];
 
   // Add Articles nav item for writers and admins

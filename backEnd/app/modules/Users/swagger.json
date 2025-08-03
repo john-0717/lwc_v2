@@ -1480,7 +1480,7 @@
         "data": {
           "type": "Object",
           "example": {
-            "publicKey": "sk_test_51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
+            "publicKey": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
             "gst": 18
           }
         }

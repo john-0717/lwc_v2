@@ -1366,19 +1366,19 @@
         },
         "prodSk": {
           "type": "string",
-          "example": "sk_test_51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
+          "example": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
         },
         "prodPk": {
           "type": "string",
-          "example": "pk_test_51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
+          "example": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
         },
         "testSk": {
           "type": "string",
-          "example": "sk_test_51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
+          "example": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
         },
         "testPk": {
           "type": "string",
-          "example": "pk_test_51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
+          "example": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf"
         },
         "isGst": {
           "type": "Boolean",
@@ -1427,10 +1427,10 @@
             "status": true,
             "transactionTestKeyStatus": true,
             "isLive": true,
-            "prodSk": "pk_test_51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
-            "prodPk": "sk_test_51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
-            "testSk": "sk_test_51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
-            "testPk": "pk_test_51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
+            "prodSk": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
+            "prodPk": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
+            "testSk": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
+            "testPk": "51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
             "isGst": true,
             "gst": 18
           }

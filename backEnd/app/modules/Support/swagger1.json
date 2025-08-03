@@ -1,0 +1,716 @@
+{
+  "paths": {
+    "/support": {
+      "post": {
+        "tags": [
+          "Support"
+        ],
+        "description": "Add Support Ticket",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add Support Ticket",
+            "schema": {
+              "$ref": "#/definitions/SupportTicketAddReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Support Add Response",
+            "schema": {
+              "$ref": "#/definitions/SupportTicketAddRes"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Support"
+        ],
+        "description": "Get Support Ticket Listing",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "{'supportId':1/-1,'title':1/-1,'status':1/-1,'firstName':1/-1,'createdAt':1/-1}",
+            "type": "string"
+          },
+          {
+            "name": "searchText",
+            "in": "query",
+            "description": "searchText",
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Support Listing Response",
+            "schema": {
+              "$ref": "#/definitions/SupportListingRes"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Support"
+        ],
+        "description": "Support Ticket Change Status ('Open' / 'Rejected' / 'Closed')",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Support Ticket Change Status",
+            "schema": {
+              "$ref": "#/definitions/SupportChangeStatusReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Support Change Status Response",
+            "schema": {
+              "$ref": "#/definitions/SupportChangeStatusRes"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Support"
+        ],
+        "description": "delete support ticket",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Support Ticket Change Status",
+            "schema": {
+              "$ref": "#/definitions/DeleteSupportReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Support delete Response",
+            "schema": {
+              "$ref": "#/definitions/DeleteSupportRes"
+            }
+          }
+        }
+      }
+    },
+    "/support/{id}": {
+      "get": {
+        "tags": [
+          "Support"
+        ],
+        "description": "Get Support Ticket replies detail listing",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Support Ticket Reply Listing details are.",
+            "schema": {
+              "$ref": "#/definitions/SupportReplyListingRes"
+            }
+          }
+        }
+      }
+    },
+    "/support/reply": {
+      "post": {
+        "tags": [
+          "Support"
+        ],
+        "description": "Add Support Reply",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add Support Ticket",
+            "schema": {
+              "$ref": "#/definitions/SupportTicketReplyAddEditReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Add Support Reply",
+            "schema": {
+              "$ref": "#/definitions/SupportTicketReplyAddRes"
+            }
+          }
+        }
+      }
+    },
+    "/support/reply/{id}": {
+      "put": {
+        "tags": [
+          "Support"
+        ],
+        "description": "Edit Support Reply",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add Support Ticket",
+            "schema": {
+              "$ref": "#/definitions/SupportTicketReplyEditReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Edit Support Reply",
+            "schema": {
+              "$ref": "#/definitions/SupportTicketReplyEditRes"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Support"
+        ],
+        "description": "Delete Support Reply",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete Support Reply",
+            "schema": {
+              "$ref": "#/definitions/SupportTicketReplyDeleteRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SupportTicketAddReq": {
+      "required": [
+        "title",
+        "description",
+        "openBy"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "openBy": {
+          "type": "string",
+          "example": "6376153b1df5fdf83c35cdab",
+          "required": true
+        }
+      }
+    },
+    "SupportTicketAddRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Support Ticket Added Successfully."
+        }
+      }
+    },
+    "SupportListingRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "page": {
+          "type": "number",
+          "example": "1"
+        },
+        "perPage": {
+          "type": "number",
+          "example": "10"
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "listing": [
+              {
+                "_id": "642d63b3cb0bb0c7b46e7564",
+                "supportId": "251213",
+                "title": "Ipsum consetetur",
+                "status": "Open",
+                "createdAt": "2023-04-05T12:04:03.839Z",
+                "firstName": "John english",
+                "lastName": "Johnson"
+              }
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": "1"
+        }
+      }
+    },
+    "SupportChangeStatusReq": {
+      "required": [
+        "ticketId",
+        "status"
+      ],
+      "properties": {
+        "ticketId": {
+          "example": "5ce25306e6405f7072059128",
+          "type": "string"
+        },
+        "status": {
+          "example": "Open",
+          "type": "string"
+        }
+      }
+    },
+    "SupportChangeStatusRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Status update successfully."
+        }
+      }
+    },
+    "DeleteSupportReq": {
+      "required": [
+        "ids"
+      ],
+      "properties": {
+        "ids": {
+          "example": [
+            "5ce25306e6405f7072059128"
+          ],
+          "type": "array"
+        }
+      }
+    },
+    "DeleteSupportRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Support Ticket Deleted Successfully."
+        }
+      }
+    },
+    "SupportTicketReplyAddEditReq": {
+      "required": [
+        "supportId",
+        "message",
+        "media"
+      ],
+      "properties": {
+        "supportId": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "message": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "media": {
+          "type": "string",
+          "example": "",
+          "required": true
+        }
+      }
+    },
+    "SupportTicketReplyAddRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Reply Added Successfully."
+        }
+      }
+    },
+    "SupportReplyListingRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "_id": "642d63b3cb0bb0c7b46e7564",
+            "supportId": "251213",
+            "description": "Ipsum conseteturSed sit diam sadipscing amet voluptua lorem est, aliquyam eirmod sadipscing dolores voluptua aliquyam elitr stet magna eirmod. Sit et.",
+            "status": "Open",
+            "openBy": {
+              "_id": "642c1380e75b0e7c467c7111",
+              "firstname": "John english",
+              "lastname": "Johnson",
+              "emailId": "johnj@grr.la"
+            },
+            "createdAt": "2023-04-05T12:04:03.839Z"
+          }
+        },
+        "listing": {
+          "type": "object",
+          "example": [
+            {
+              "_id": "642fd71e65d6e01a796a3832",
+              "supportId": "642d63b3cb0bb0c7b46e7564",
+              "message": "<p>sdsdad</p>",
+              "firstName": "Admin",
+              "lastName": "Admin",
+              "emailId": "seed_admin@grr.la",
+              "photo": "imageCompress_300_1680237683641.webp"
+            },
+            {
+              "_id": "642fd74a65d6e01a796a3872",
+              "supportId": "642d63b3cb0bb0c7b46e7564",
+              "message": "<p>image</p>",
+              "firstName": "Admin",
+              "lastName": "Admin",
+              "emailId": "seed_admin@grr.la",
+              "photo": "imageCompress_300_1680237683641.webp"
+            }
+          ]
+        },
+        "total": {
+          "type": "number",
+          "example": "1"
+        }
+      }
+    },
+    "SupportTicketReplyEditReq": {
+      "required": [
+        "replyId",
+        "message",
+        "media"
+      ],
+      "properties": {
+        "replyId": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "message": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "media": {
+          "type": "string",
+          "example": "",
+          "required": true
+        }
+      }
+    },
+    "SupportTicketReplyEditRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Reply Edited Successfully."
+        }
+      }
+    },
+    "SupportTicketReplyDeleteRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Reply Deleted Successfully."
+        }
+      }
+    }
+  }
+}

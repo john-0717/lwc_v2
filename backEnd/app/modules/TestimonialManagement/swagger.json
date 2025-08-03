@@ -1,0 +1,450 @@
+{
+    "paths": {
+      "/testimonial/add": {
+        "post": {
+          "tags": ["Testimonial Management"],
+          "description": "Testimonial Add",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Tetimonial Add",
+              "schema": {
+                "$ref": "#/definitions/testimonialAddInReq"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "deviceid",
+              "in": "header",
+              "description": "deviceid of device android, ios or web",
+              "type": "string",
+              "required": true
+            }
+          ],
+          "security": {
+            "basicAuth": []
+          },
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Testimonial Add",
+              "schema": {
+                "$ref": "#/definitions/testimonialAddInRes"
+              }
+            }
+          }
+        }
+      },
+      "/testimonial/edit": {
+        "post": {
+          "tags": ["Testimonial Management"],
+          "description": "Testimonial Edit",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Testimonial Edit",
+              "schema": {
+                "$ref": "#/definitions/testimonialEditInReq"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "deviceid",
+              "in": "header",
+              "description": "deviceid of device android, ios or web",
+              "type": "string",
+              "required": true
+            }
+          ],
+          "security": {
+            "basicAuth": []
+          },
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Testimonial Edit Response",
+              "schema": {
+                "$ref": "#/definitions/testimonialEditInRes"
+              }
+            }
+          }
+        }
+      },
+      "/testimonial/listing": {
+        "get": {
+          "tags": ["Testimonial Management"],
+          "description": "Testimonial list",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "deviceid",
+              "in": "header",
+              "description": "deviceid of device android, ios or web",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "search",
+              "in": "query",
+              "description": "search key",
+              "type": "string"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "description": "page number",
+              "type": "number"
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "Number of pages",
+              "type": "number"
+            },
+            {
+              "name": "sort",
+              "in": "query",
+              "description": "sort by",
+              "type": "string"
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Testimonial list",
+              "schema": {
+                "$ref": "#/definitions/testimonialListingInRes"
+              }
+            }
+          }
+        }
+      },
+      
+      "/testimonial/delete": {
+        "delete": {
+          "tags": ["Testimonial Management"],
+          "description": "Testimonial Delete",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Testimonial Delete",
+              "schema": {
+                "$ref": "#/definitions/testimonialDeleteInReq"
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "deviceid",
+              "in": "header",
+              "description": "deviceid of device android, ios or web",
+              "type": "string",
+              "required": true
+            }
+          ],
+          "security": {
+            "basicAuth": []
+          },
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Testimonial Delete Response",
+              "schema": {
+                "$ref": "#/definitions/testimonialDeleteInRes"
+              }
+            }
+          }
+        }
+      },
+      "/testimonial/details": {
+        "get": {
+          "tags": ["Testimonial Management"],
+          "description": "Testimonial by id",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization token",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "deviceid",
+              "in": "header",
+              "description": "deviceid of device android, ios or web",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "id",
+              "in": "query",
+              "description": "cms page id",
+              "type": "string"
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Testimonial by id",
+              "schema": {
+                "$ref": "#/definitions/testimonialDetailsInRes"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "testimonialAddInReq": {
+        "required": [
+          "title",
+          "imageUrl"
+        ],
+        "properties": {
+  
+          "title": {
+            "type": "string",
+            "example": "test",
+            "uniqueItems": true,
+            "required": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "example": "image url",
+            "uniqueItems": true,
+            "required": true
+          },
+          "description": {
+            "type": "string",
+            "example": "test",
+            "required": true
+          },
+          "testimonialDesignation":{
+            "type": "string",
+            "example": "CEO",
+            "required": true
+          }
+        }
+      },
+      "testimonialAddInRes": {
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": "true"
+          },
+          "statusCode": {
+            "type": "number",
+            "example": "200"
+          },
+          "message": {
+            "type": "string",
+            "example": "Testimonial added successfully."
+          }
+        }
+      },
+      "testimonialEditInReq": {
+        "required": [
+          "title",
+          "imageUrl",
+          "id"
+         
+        ],
+        "properties": {
+            "title": {
+                "type": "string",
+                "example": "test",
+                "uniqueItems": true,
+                "required": true
+              },
+              "imageUrl": {
+                "type": "string",
+                "example": "image url",
+                "uniqueItems": true,
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "example": "test",
+                "uniqueItems": true,
+                "required": true
+              },
+              "testimonialDesignation":{
+                "type": "string",
+                "example": "CEO",
+                "required": true
+              },
+            
+          "id": {
+            "type": "string",
+            "example": "5ce25306e6405f7072059128",
+            "uniqueItems": true,
+            "required": true
+          }
+        }
+      },
+      "testimonialEditInRes": {
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": "true"
+          },
+          "statusCode": {
+            "type": "number",
+            "example": "200"
+          },
+          "message": {
+            "type": "string",
+            "example": "Testimonial updated successfully."
+          }
+        }
+      },
+      "testimonialListingInRes": {
+        "properties": {
+          "status": {
+            "type": "Boolean",
+            "example": true
+          },
+          "statusCode": {
+            "type": "Number",
+            "example": 200
+          },
+          "message": {
+            "type": "String",
+            "example": "Get details successfully."
+          },
+          "data": {
+            "type": "Array",
+            "example": [
+              {
+                "_id": "646e065cf0ab29ccc755c0ef",
+                "title": "title",
+                "imageUrl": "video Url",
+                "description": "description",
+                "isDeleted": false,
+                "createdBy": {
+                  "_id": "64636a92df0643afd384e9a5",
+                  "firstname": "Admin",
+                  "lastname": "Admin"
+                },
+                "createdAt": 987654545452,
+                "updatedAt": 887765654543,
+                "__v": 0,
+                "modifiedBy": {
+                  "_id": "64636a92df0643afd384e9a5",
+                  "firstname": "Admin",
+                  "lastname": "Admin"
+                }
+              }
+            ]
+          },
+          "page": {
+            "type": "Number",
+            "example": 1
+          },
+          "perPage": {
+            "type": "Number",
+            "example": 10
+          },
+          "total": {
+            "type": "Number",
+            "example": 20
+          },
+          "extra_meta": {
+            "type": "String",
+            "example": null
+          }
+        }
+      },
+      "testimonialDeleteInReq": {
+        "required": ["ids"],
+        "properties": {
+          "ids": {
+            "example": ["5ce25306e6405f7072059128", "5ce25320e6405f707205912f"],
+            "type": "array"
+          }
+        }
+      },
+      "testimonialDeleteInRes": {
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": "true"
+          },
+          "statusCode": {
+            "type": "number",
+            "example": "200"
+          },
+          "message": {
+            "type": "string",
+            "example": "Testimonial Deleted Successfully."
+          }
+        }
+      },
+      "testimonialDetailsInRes": {
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": "true"
+          },
+          "statusCode": {
+            "type": "number",
+            "example": "200"
+          },
+          "message": {
+            "type": "string",
+            "example": "Get details successfully."
+          },
+          "data": {
+            "type": "object",
+            "example": {
+              "_id": "646e065cf0ab29ccc755c0ef",
+              "title": "title",
+              "imageUrl": "video url",
+              "description": "description",
+              "isDeleted": false,
+              "createdBy": {
+                "_id": "64636a92df0643afd384e9a5",
+                "firstname": "Admin",
+                "lastname": "Admin"
+              },
+              "createdAt": "2023-05-24T12:43:08.995Z",
+              "updatedAt": "2023-05-24T13:19:56.677Z",
+              "__v": 0,
+              "modifiedBy": {
+                "_id": "64636a92df0643afd384e9a5",
+                "firstname": "Admin",
+                "lastname": "Admin"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  

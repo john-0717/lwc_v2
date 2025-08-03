@@ -1,0 +1,24 @@
+{
+    "country": {
+        "__v": 0,
+        "updatedAt": 0,
+        "createdAt": 0,
+        "isDeleted": 0
+    },
+    "list": {
+        "timeZone": 1
+    },
+    "timezone": {
+        "__v": 0,
+        "updatedAt": 0,
+        "createdAt": 0,
+        "isDeleted": 0
+    },
+    "timezoneListing": {
+        "_id": 1,
+        "timeZone": 1,
+        "status": 1,
+        "countryId": "$countryData._id",
+        "countryName": "$countryData.countryName"
+    }
+}

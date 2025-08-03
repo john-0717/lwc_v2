@@ -1,0 +1,14 @@
+{
+    "email": {
+        "__v": 0,
+        "isDeleted": 0
+    },
+    "emailSearching": {
+        "__v": 0,
+        "isDeleted": 0
+    },
+    "list": {
+        "countryName": 1,
+        "countryCode": 1
+    }
+}

@@ -1,0 +1,1507 @@
+{
+  "paths": {
+    "/user/sign-in": {
+      "post": {
+        "tags": ["Users"],
+        "description": "User Sign In",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User Sign In",
+            "schema": {
+              "$ref": "#/definitions/UserSignInReq"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A JWT Token response with User details",
+            "schema": {
+              "$ref": "#/definitions/UserSignInRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/forgot-password": {
+      "post": {
+        "tags": ["Users"],
+        "description": "User Forgot Password",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User Forgot Password",
+            "schema": {
+              "$ref": "#/definitions/UserForgotPwdinReq"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User Forgot Pwd",
+            "schema": {
+              "$ref": "#/definitions/UserForgotPwdinRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/change-password": {
+      "post": {
+        "tags": ["Users"],
+        "description": "User Change Password",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User Change Password",
+            "schema": {
+              "$ref": "#/definitions/UserChangePwdinReq"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User Change Password",
+            "schema": {
+              "$ref": "#/definitions/UserChangePwdinRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/reset-password": {
+      "post": {
+        "tags": ["Users"],
+        "description": "User reset Password",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User reset Password",
+            "schema": {
+              "$ref": "#/definitions/UserResetPwdinReq"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User Reset Password",
+            "schema": {
+              "$ref": "#/definitions/UserResetPwdinRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/verify-code": {
+      "post": {
+        "tags": ["Users"],
+        "description": "User Verify Code",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User Verify Code",
+            "schema": {
+              "$ref": "#/definitions/UserVerifyCodeinReq"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User Verify Code",
+            "schema": {
+              "$ref": "#/definitions/UserVerifyCodeinRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/send-code": {
+      "post": {
+        "tags": ["Users"],
+        "description": "User Send Code",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User Send Code",
+            "schema": {
+              "$ref": "#/definitions/UserResendCodeinReq"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User Send Code",
+            "schema": {
+              "$ref": "#/definitions/UserResendCodeinRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/send-feedback": {
+      "post": {
+        "tags": ["Users"],
+        "description": "User Send Feedback",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User Send Feedback",
+            "schema": {
+              "$ref": "#/definitions/UserSendFeedbackinReq"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User Send Feedback",
+            "schema": {
+              "$ref": "#/definitions/UserSendFeedbackinRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/master-data": {
+      "post": {
+        "tags": ["Users"],
+        "description": "List of master data added by admin",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User required data params",
+            "schema": {
+              "$ref": "#/definitions/UserMasterDatainReq"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "List of master data added by admin",
+            "schema": {
+              "$ref": "#/definitions/UserMasterDatainRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/notification-read": {
+      "get": {
+        "tags": ["Users"],
+        "description": "notification-read and delete",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "notification id",
+            "type": "string",
+            "required": true,
+            "schema": {
+              "type": "String",
+              "example": "641804483404984d4de40f06"
+            }
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "chat/conversation list between employer and applicant",
+            "schema": {
+              "$ref": "#/definitions/notification-read-response"
+            }
+          }
+        }
+      }
+    },
+    "/user/chat/send-message": {
+      "post": {
+        "tags": ["Users"],
+        "description": "Employer send message to applicant",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Employer send message to applicant",
+            "schema": {
+              "$ref": "#/definitions/send-message-Request"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "send message response",
+            "schema": {
+              "$ref": "#/definitions/send-message-Response"
+            }
+          }
+        }
+      }
+    },
+    "/user/activity-log": {
+      "get": {
+        "tags": ["Users"],
+        "description": "Employer/Applicant activity log",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "schema": {
+              "type": "Number",
+              "example": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "schema": {
+              "type": "Number",
+              "example": 10
+            }
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Employer/Applicant activity log",
+            "schema": {
+              "$ref": "#/definitions/activityLogListingInRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/logout": {
+      "get": {
+        "tags": ["Users"],
+        "description": "User Log out",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A JWT Token response with User details",
+            "schema": {
+              "$ref": "#/definitions/UserLogOutInRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/delete-account": {
+      "delete": {
+        "tags": ["Users"],
+        "description": "User delete account",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "response from api",
+            "schema": {
+              "$ref": "#/definitions/UserDeleteInRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/file-upload": {
+      "post": {
+        "tags": ["Users"],
+        "description": "Upload .pdf file only.",
+        "parameters": [
+          {
+            "name": "file",
+            "required": true,
+            "in": "formData",
+            "type": "file",
+            "description": "Upload file"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "produces": ["multipart/form-data"],
+        "responses": {
+          "200": {
+            "description": "File uploaded",
+            "schema": {
+              "$ref": "#/definitions/Uploadfile"
+            }
+          }
+        }
+      }
+    },
+    "/user/create-password": {
+      "post": {
+        "tags": ["Users"],
+        "description": "User create Password",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User create Password",
+            "schema": {
+              "$ref": "#/definitions/UserCreatePwdInReq"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User Create Password",
+            "schema": {
+              "$ref": "#/definitions/UserCreatePwdInRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/mark-notification": {
+      "post": {
+        "tags": ["Users"],
+        "description": "Mark as read Notification",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Mark as read Notification",
+            "schema": {
+              "$ref": "#/definitions/markAsReadNotificationsInReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Mark as read Notification",
+            "schema": {
+              "$ref": "#/definitions/markAsReadNotificationsInRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/notifications": {
+      "get": {
+        "tags": ["Users"],
+        "description": "Notifications list",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "number"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of pages",
+            "type": "number"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Notifications list",
+            "schema": {
+              "$ref": "#/definitions/notificationListingInRes"
+            }
+          }
+        }
+      }
+    },
+    "/user/search-suggestions": {
+      "get": {
+        "tags": ["Users"],
+        "description": "search suggestions",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "searchText",
+            "in": "query",
+            "description": "searchText",
+            "type": "string",
+            "required": true,
+            "schema": {
+              "type": "String",
+              "example": "Java"
+            }
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "search suggestions",
+            "schema": {
+              "$ref": "#/definitions/searchSuggestions"
+            }
+          }
+        }
+      }
+    },
+    "/stripe/publishable-key": {
+      "get": {
+        "tags": ["Users"],
+        "description": "publishable key and gst will come",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "get stripe public key and gst",
+            "schema": {
+              "$ref": "#/definitions/stripeKeys"
+            }
+          }
+        }
+      }
+    },
+    "/user/public-pricing": {
+      "get": {
+        "tags": ["Users"],
+        "description": "get subscription plans",
+        "security": {
+          "basicAuth": []
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "get subscription plans",
+            "schema": {
+              "$ref": "#/definitions/subscriptions-listing-response"
+            }
+          }
+        }
+      }
+    },
+    "/user/popup": {
+      "post": {
+        "tags": ["Users"],
+        "description": "Mark popup false",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Mark as read Notification",
+            "schema": {
+              "$ref": "#/definitions/markPopupFalseInReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "employerId",
+            "in": "header",
+            "description": "employerId to update the popup model",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Mark popup as false",
+            "schema": {
+              "$ref": "#/definitions/markPopupFalseInRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UserSignInReq": {
+      "required": ["email"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "user@grr.la",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "markPopupFalseInReq": {
+      "required": ["isPopup"],
+      "properties": {
+        "isPopup": {
+          "type": "boolean",
+          "example": false,
+          "required": true
+        }
+      }
+    },
+    "markPopupFalseInRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Pop-Up closed successfully."
+        },
+        "statusCode": {
+          "type": "number",
+          "example": 200
+        }
+      }
+    },
+    "UserDeleteInRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Account deleted successfully."
+        },
+        "statusCode": {
+          "type": "number",
+          "example": 200
+        }
+      }
+    },
+    "UserSignInRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Logged in successfully."
+        },
+        "statusCode": {
+          "type": "number",
+          "example": 200
+        },
+        "data": {
+          "type": "array",
+          "example": [
+            {
+              "email": "user@grr.la",
+              "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbElkIjoic2VlZF9hZG1pbkBncnIubGEiLCJhbGdvcml0aG0iOiJIUzI1NiIsImV4cCI6MTY2OTQ3NDc1OSwiaWF0IjoxNjY5MTEzMzE5fQ.O0nwxjpbYX_a1RDVqqxkOsPBPClZRQ_V_3OtiJ3J_8s",
+              "userId": "5ce25306e6405f7072059128",
+              "role": "user",
+              "isPopup": true
+            }
+          ]
+        }
+      }
+    },
+    "UserLogOutInRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Logged out successfully."
+        },
+        "statusCode": {
+          "type": "number",
+          "example": 200
+        }
+      }
+    },
+    "UserForgotPwdinReq": {
+      "required": ["email"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "user@grr.la",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "UserForgotPwdinRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "string",
+          "example": "OTP has been sent to your email"
+        },
+        "data": {
+          "type": "Object",
+          "example": {
+            "id": "64670ad7dd932cd2478fabcc",
+            "email": "t200@yopmail.com"
+          }
+        }
+      }
+    },
+    "UserResetPwdinReq": {
+      "required": ["password", "confirmPassword", "id"],
+      "properties": {
+        "password": {
+          "type": "string",
+          "example": "Tester1!",
+          "required": true
+        },
+        "confirmPassword": {
+          "type": "string",
+          "example": "Tester1!",
+          "required": true
+        },
+        "id": {
+          "type": "string",
+          "example": "646f54086561890f6cdba8a7",
+          "required": true
+        }
+      }
+    },
+    "UserResetPwdinRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Password updated successfully."
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        }
+      }
+    },
+    "UserChangePwdinReq": {
+      "required": ["currentPassword", "newPassword", "password"],
+      "properties": {
+        "currentPassword": {
+          "type": "string",
+          "example": "Tester2!",
+          "required": true
+        },
+        "password": {
+          "type": "string",
+          "example": "Tester1!",
+          "required": true
+        },
+        "confirmPassword": {
+          "type": "string",
+          "example": "Tester1!",
+          "required": true
+        }
+      }
+    },
+    "UserChangePwdinRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Password updated successfully."
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        }
+      }
+    },
+    "UserVerifyCodeinReq": {
+      "required": ["OTP", "id"],
+      "properties": {
+        "OTP": {
+          "type": "string",
+          "example": "vDrey#",
+          "required": true
+        },
+        "id": {
+          "type": "string",
+          "example": "641804483404984d4de40f06",
+          "required": true
+        }
+      }
+    },
+    "UserVerifyCodeinRes": {
+      "properties": {
+        "status": {
+          "type": "number",
+          "example": "0 or 1"
+        },
+        "message": {
+          "type": "string",
+          "example": "OTP verified successfully"
+        },
+        "data": {
+          "type": "array",
+          "example": { "id": "64670ad7dd932cd2478fabcc" }
+        }
+      }
+    },
+    "UserResendCodeinReq": {
+      "required": ["email"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "john@gmail.com",
+          "required": true
+        }
+      }
+    },
+    "UserResendCodeinRes": {
+      "properties": {
+        "status": {
+          "type": "number",
+          "example": "0 or 1"
+        },
+        "message": {
+          "type": "string",
+          "example": "OTP resent successfully"
+        },
+        "data": {
+          "type": "array",
+          "example": []
+        }
+      }
+    },
+    "UserMasterDatainRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "Object",
+          "example": {
+            "masterSubscriptions": [
+              {
+                "_id": "6464ccf47578601e8338554a",
+                "name": "Trial Plan",
+                "description": "It is a free trial plan for 30 days",
+                "price": 0,
+                "maxNumListing": 5,
+                "isUnlimitedListing": false,
+                "planDuration": 30,
+                "topSearch": false,
+                "type": "Default",
+                "createdAt": "2023-05-17T12:47:48.572Z",
+                "updatedAt": "2023-05-17T12:47:48.572Z",
+                "__v": 0
+              },
+              {
+                "_id": "6464ccf47578601e8338554c",
+                "name": "Pay as you go",
+                "description": "It is a simple payment plan to pay for single listing",
+                "price": 100,
+                "maxNumListing": 1,
+                "isUnlimitedListing": false,
+                "planDuration": 0,
+                "topSearch": false,
+                "type": "Static",
+                "createdAt": "2023-05-17T12:47:48.573Z",
+                "updatedAt": "2023-05-17T12:47:48.573Z",
+                "__v": 0
+              },
+              {
+                "_id": "6464ccf47578601e8338554e",
+                "name": "Bulk Deal",
+                "description": "It is a bulk deal plan",
+                "price": 400,
+                "maxNumListing": 10,
+                "isUnlimitedListing": false,
+                "planDuration": 30,
+                "topSearch": false,
+                "type": "Plan",
+                "createdAt": "2023-05-17T12:47:48.574Z",
+                "updatedAt": "2023-05-17T12:47:48.574Z",
+                "__v": 0
+              },
+              {
+                "_id": "6464ccf47578601e83385550",
+                "name": "Enterprise Deal",
+                "description": "It is a enterprise deal plan",
+                "price": 0,
+                "maxNumListing": 10,
+                "isUnlimitedListing": false,
+                "planDuration": 30,
+                "topSearch": false,
+                "type": "Plan",
+                "createdAt": "2023-05-17T12:47:48.575Z",
+                "updatedAt": "2023-05-17T12:47:48.575Z",
+                "__v": 0
+              }
+            ],
+            "masterPromoCodes": [
+              {
+                "_id": "646b0564f76028ff624543a0",
+                "couponName": "ARJ-100",
+                "price": 30,
+                "discountType": "Price",
+                "status": false,
+                "expiryDate": "23-05-2023"
+              },
+              {
+                "_id": "646b0564f76028ff624543a1",
+                "couponName": "ARJ-101",
+                "price": 5,
+                "discountType": "Percentage",
+                "status": false,
+                "expiryDate": "23-05-2023"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "UserMasterDatainReq": {
+      "required": ["email"],
+      "properties": {
+        "masterSubscriptions": {
+          "type": "Number",
+          "example": 1
+        },
+        "masterPromoCodes": {
+          "type": "Number",
+          "example": 1
+        },
+        "masterAddOns": {
+          "type": "Number",
+          "example": 0
+        },
+        "countries": {
+          "type": "Number",
+          "example": 1
+        }
+      }
+    },
+    "notification-read-response": {
+      "properties": {
+        "status": {
+          "type": "Number",
+          "example": 1
+        },
+        "message": {
+          "type": "string",
+          "example": ""
+        },
+        "data": {
+          "type": "Array",
+          "example": []
+        }
+      }
+    },
+    "send-message-Request": {
+      "required": ["recieverId", "message"],
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Indianic message",
+          "required": true
+        },
+        "recieverId": {
+          "type": "string",
+          "example": "641804483404984d4de40f06",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "send-message-Response": {
+      "properties": {
+        "status": {
+          "type": "Number",
+          "example": 1
+        },
+        "message": {
+          "type": "string",
+          "example": ""
+        },
+        "data": {
+          "type": "Array",
+          "example": []
+        }
+      }
+    },
+    "activity-details-response": {
+      "properties": {
+        "status": {
+          "type": "Number",
+          "example": 1
+        },
+        "message": {
+          "type": "string",
+          "example": ""
+        },
+        "data": {
+          "type": "Array",
+          "example": [
+            {
+              "listing": [
+                {
+                  "user": {
+                    "_id": "641804483404984d4de40f06",
+                    "firstName": "firstName",
+                    "lastName": "lastName",
+                    "email": "ejeyd@example.com"
+                  },
+                  "job": {
+                    "_id": "641804483404984d4de40f06",
+                    "jobTitle": "title",
+                    "jobType": "title",
+                    "logo": "logo url",
+                    "industry": "Finance",
+                    "mandatoryExperience": "0-4years",
+                    "payRateFrom": 15,
+                    "payRateTo": 20
+                  },
+                  "event": "job saved",
+                  "log": "he saved the job at dd-mm-yyyy 00:00",
+                  "visibleTo": "641804483404984d4de40f06"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "UserSendFeedbackinReq": {
+      "required": ["name", "email"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "John"
+        },
+        "city": {
+          "type": "string",
+          "example": "city name"
+        },
+        "email": {
+          "type": "string",
+          "example": "john@gmail.com",
+          "required": true
+        },
+        "phoneCode": {
+          "type": "number",
+          "example": 91
+        },
+        "phone": {
+          "type": "number",
+          "example": "09877676765"
+        },
+        "queryType": {
+          "type": "string",
+          "example": "Complaint/Suggestion/Tech Issue/Others"
+        },
+        "queryMessage": {
+          "type": "string",
+          "example": "message"
+        }
+      }
+    },
+    "UserSendFeedbackinRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Feedback sent successfully"
+        }
+      }
+    },
+    "Uploadfile": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "File uploaded successfully"
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "filePath": "imageCompress_300_1675160183856.webp"
+          }
+        }
+      }
+    },
+    "UserCreatePwdInReq": {
+      "required": ["password", "confirmPassword", "userCode"],
+      "properties": {
+        "password": {
+          "type": "string",
+          "example": "Tester1!",
+          "required": true
+        },
+        "confirmPassword": {
+          "type": "string",
+          "example": "Tester1!",
+          "required": true
+        },
+        "userCode": {
+          "type": "string",
+          "example": "NjQ5YmUwNGM4MmE4MDFlNmUxNjk0Y2Y5MTY4NzkzNzEwMDU0Nw==",
+          "required": true
+        }
+      }
+    },
+    "UserCreatePwdInRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Password created successfully."
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        }
+      }
+    },
+    "activityLogListingInRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "String",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "Array",
+          "example": [
+            {
+              "_id": "64af95626231d87ff2cd2ae6",
+              "jobId": "64874ef954f3fb8d2f8a5175",
+              "userId": "646f54086561890f6cdba8a7",
+              "event": "Job Saved",
+              "log": "This job is saved by you",
+              "data": {
+                "fullName": "Nick Jonas",
+                "profileUrl": "node/imageCompress_300_1685009232278.webp"
+              },
+              "createdAt": 1689228642809,
+              "updatedAt": 1689228642809,
+              "__v": 0,
+              "jobs": [
+                {
+                  "_id": "64874ef954f3fb8d2f8a5175",
+                  "jobTitle": "Java Developer",
+                  "jobType": "Full Time",
+                  "location": "New Zeland",
+                  "industry": "Finance",
+                  "salary": true,
+                  "payRateFrom": 40,
+                  "payRateTo": 60,
+                  "hoursPerWeek": 8,
+                  "isBonusAllowed": true,
+                  "bonusAmount": 25,
+                  "earningPerWeek": 5,
+                  "paymentFrequency": "monthly",
+                  "mandatoryQualificationName": "qualification name",
+                  "mandatoryQualificationLevel": "fromAdmin",
+                  "optionalQualificationName": "optional qualification name",
+                  "optionalQualificationLevel": "fromAdmin",
+                  "mandatoryExperience": "fromAdmin",
+                  "optionalExperience": "fromAdmin",
+                  "isQualificationExpRequired": true,
+                  "qualificationDescription": "some description about",
+                  "isNzRegistration": true,
+                  "nzRegistrationDetails": "some description",
+                  "jobDuties": "job duties",
+                  "jobSkills": ["java", "python"],
+                  "status": "Published",
+                  "otherInfo": "other infoo",
+                  "createdAt": 1686589166531,
+                  "updatedAt": 1686589166531,
+                  "__v": 0,
+                  "userId": "64749b4fb5ed014b1801ec12",
+                  "isDeleted": false,
+                  "applicationId": "#1685331200"
+                }
+              ]
+            },
+            {
+              "_id": "64af94fc2e28ddb7e8b5cd2d",
+              "jobId": "64772c11ab1ef6e88c134f92",
+              "userId": "646f54086561890f6cdba8a7",
+              "event": "Job Archived",
+              "log": "This job is archived by you",
+              "data": {
+                "fullName": "Nick Jonas",
+                "profileUrl": "node/imageCompress_300_1685009232278.webp"
+              },
+              "createdAt": 1689228540422,
+              "updatedAt": 1689228540422,
+              "__v": 0,
+              "jobs": [
+                {
+                  "_id": "64772c11ab1ef6e88c134f92",
+                  "jobTitle": "Java Developer",
+                  "jobType": "Full Time",
+                  "location": "Auckland",
+                  "industry": "Finance",
+                  "salary": true,
+                  "payRateFrom": 25,
+                  "payRateTo": 35,
+                  "hoursPerWeek": 8,
+                  "isBonusAllowed": true,
+                  "bonusAmount": 25,
+                  "earningPerWeek": 5,
+                  "paymentFrequency": "monthly",
+                  "mandatoryQualificationName": "qualification name",
+                  "mandatoryQualificationLevel": "fromAdmin",
+                  "optionalQualificationName": "optional qualification name",
+                  "optionalQualificationLevel": "fromAdmin",
+                  "mandatoryExperience": "2 year",
+                  "optionalExperience": "fromAdmin",
+                  "isQualificationExpRequired": true,
+                  "qualificationDescription": "some description about",
+                  "isNzRegistration": true,
+                  "nzRegistrationDetails": "some description",
+                  "jobDuties": "job duties",
+                  "jobSkills": ["java", "python"],
+                  "status": "Expired",
+                  "otherInfo": "other infoo",
+                  "createdAt": 1684909169147,
+                  "updatedAt": 1685035220918,
+                  "__v": 0,
+                  "userId": "64749b4fb5ed014b1801ec12",
+                  "isDeleted": false,
+                  "jobId": "#1685331300"
+                }
+              ]
+            }
+          ]
+        },
+        "page": {
+          "type": "Number",
+          "example": 1
+        },
+        "perPage": {
+          "type": "Number",
+          "example": 10
+        },
+        "total": {
+          "type": "Number",
+          "example": 20
+        },
+        "extra_meta": {
+          "type": "String",
+          "example": null
+        }
+      }
+    },
+    "markAsReadNotificationsInReq": {
+      "required": ["ids"],
+      "properties": {
+        "ids": {
+          "type": "array",
+          "example": ["5ce25306e6405f7072059128"]
+        }
+      }
+    },
+    "markAsReadNotificationsInRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Marked as read"
+        }
+      }
+    },
+    "notificationListingInRes": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "String",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "Array",
+          "example": [
+            {
+              "_id": "64aff5ed250dff800ccc74de",
+              "senderId": "646f54086561890f6cdba8a7",
+              "event": "Job Archived",
+              "log": "job title is archived by Nick Jonas",
+              "isRead": false,
+              "isDeleted": false,
+              "isVisibleToAdmin": false,
+              "createdAt": 1689253357967,
+              "updatedAt": 1689253357967,
+              "__v": 0
+            },
+            {
+              "_id": "64aff57d0686e88f2ad12f07",
+              "senderId": "646f54086561890f6cdba8a7",
+              "event": "Job Unsaved",
+              "log": "job title is unsaved by Nick Jonas",
+              "isRead": false,
+              "isDeleted": false,
+              "isVisibleToAdmin": false,
+              "createdAt": 1689253245491,
+              "updatedAt": 1689253245491,
+              "__v": 0
+            }
+          ]
+        },
+        "page": {
+          "type": "Number",
+          "example": 1
+        },
+        "perPage": {
+          "type": "Number",
+          "example": 10
+        },
+        "total": {
+          "type": "Number",
+          "example": 20
+        },
+        "extra_meta": {
+          "type": "String",
+          "example": {
+            "unreadCount": 6
+          }
+        }
+      }
+    },
+    "searchSuggestions": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "String",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "Array",
+          "example": [
+            {
+              "listing": ["Java Developer"]
+            }
+          ]
+        }
+      }
+    },
+    "stripeKeys": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "statusCode": {
+          "type": "Number",
+          "example": 200
+        },
+        "message": {
+          "type": "String",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "Object",
+          "example": {
+            "publicKey": "sk_test_51LXjFxSBikUvm25bYDOk4SIXcYVKqO4uDtlXXxTom0BkD99P6layTugG8oeipmoWiaSWikm0RlhXp6y2ItyiGA0L00alGeLQIf",
+            "gst": 18
+          }
+        }
+      }
+    },
+    "subscriptions-listing-response": {
+      "properties": {
+        "status": {
+          "type": "Boolean",
+          "example": true
+        },
+        "statusCode": 200,
+        "message": {
+          "type": "string",
+          "example": "Data get successfully"
+        },
+        "data": {
+          "type": "object",
+          "example": { "listing": [] }
+        }
+      }
+    }
+  }
+}

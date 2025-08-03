@@ -1,0 +1,613 @@
+{
+  "paths": {
+    "/user-management": {
+      "post": {
+        "tags": [
+          "User Management"
+        ],
+        "description": "User Add/Edit (use userId only for Edit User)",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User Add/Edit",
+            "schema": {
+              "$ref": "#/definitions/UserAddEditReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User Add/Edit Response",
+            "schema": {
+              "$ref": "#/definitions/UserAddEditRes"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "User Management"
+        ],
+        "description": "User Change Status",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User Change Status",
+            "schema": {
+              "$ref": "#/definitions/UserChangeStatusReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User Change Status Response",
+            "schema": {
+              "$ref": "#/definitions/UserChangeStatusRes"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User Management"
+        ],
+        "description": "Users Delete",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Users Delete",
+            "schema": {
+              "$ref": "#/definitions/UserDeleteReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User Delete Response",
+            "schema": {
+              "$ref": "#/definitions/UserDeleteRes"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "User Management"
+        ],
+        "description": "Get User details",
+        "parameters": [
+          {
+            "name": "userCode",
+            "in": "query",
+            "description": "userCode",
+            "required": true
+          },
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User details are.",
+            "schema": {
+              "$ref": "#/definitions/GetUserDetailsRes"
+            }
+          }
+        }
+      }
+    },
+    "/user-management/listing": {
+      "post": {
+        "tags": [
+          "User Management"
+        ],
+        "description": "User Listing use 'contains' for string, use '>' for greaterThan, use '>=' for greaterThanOrEqualTo for int, use '<' for lessThan for int, use '<=' for lessThanOrEqualTo for int, use '!=' for notEqualTo for int",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User Listing",
+            "schema": {
+              "$ref": "#/definitions/UserListingReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User details are.",
+            "schema": {
+              "$ref": "#/definitions/UserListingRes"
+            }
+          }
+        }
+      }
+    },
+    "/user-management/download/{type}": {
+      "get": {
+        "tags": [
+          "User Management"
+        ],
+        "description": "Download User Details type:'excel/csv'",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "type",
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "filter"
+          },
+          {
+            "name": "column",
+            "in": "query",
+            "description": "column",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User details are.",
+            "schema": {
+              "$ref": "#/definitions/GetUserDownloadDetailsRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UserAddEditReq": {
+      "required": [
+        "userId",
+        "firstname",
+        "lastname",
+        "emailId",
+        "mobile",
+        "dateofbirth",
+        "languageId",
+        "photo"
+      ],
+      "properties": {
+        "userId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "languageId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "firstname": {
+          "type": "string",
+          "example": "Admin",
+          "uniqueItems": true,
+          "required": true
+        },
+        "lastname": {
+          "type": "string",
+          "example": "Admin",
+          "uniqueItems": true,
+          "required": true
+        },
+        "emailId": {
+          "type": "string",
+          "example": "seed_admin@grr.la",
+          "uniqueItems": true,
+          "required": true
+        },
+        "mobile": {
+          "type": "string",
+          "example": "+91-0000000000",
+          "uniqueItems": true,
+          "required": true
+        },
+        "dateofbirth": {
+          "type": "string",
+          "example": "2000-01-20",
+          "uniqueItems": true,
+          "required": true
+        },
+        "photo": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "UserAddEditRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "User Added Successfully."
+        }
+      }
+    },
+    "UserListingReq": {
+      "required": [
+        "page",
+        "pagesize",
+        "languageId"
+      ],
+      "properties": {
+        "languageId": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "page": {
+          "type": "number",
+          "example": "1",
+          "required": true
+        },
+        "pagesize": {
+          "type": "number",
+          "example": "10",
+          "required": true
+        },
+        "filter": {
+          "type": "object",
+          "example": [
+            {
+              "key": "emailId",
+              "type": "contains",
+              "value": "n@demo.com",
+              "condition": "$and"
+            },
+            {
+              "key": "firstname",
+              "type": "contains",
+              "value": "chagan",
+              "condition": "$and"
+            },
+            {
+              "key": "dateofbirth",
+              "type": "date",
+              "value": {
+                "startDate": "2022-08-01",
+                "endDate": "2022-09-06"
+              },
+              "condition": "$and"
+            }
+          ],
+          "required": true
+        },
+        "searchText": {
+          "type": "string",
+          "example": "User",
+          "required": true
+        }
+      }
+    },
+    "UserListingRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "page": {
+          "type": "number",
+          "example": "1"
+        },
+        "perPage": {
+          "type": "number",
+          "example": "10"
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "listing": [
+              {
+                "_id": "63b2c950a0da01914a83b197",
+                "firstname": "Malhar",
+                "lastname": "Trivedi",
+                "emailId": "malhartrivedi@grr.la",
+                "emailVerificationStatus": false,
+                "status": false,
+                "dateofbirth": "2000-01-20T00:00:00.000Z"
+              }
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": "1"
+        }
+      }
+    },
+    "UserDeleteReq": {
+      "required": [
+        "userIds"
+      ],
+      "properties": {
+        "userIds": {
+          "example": [
+            "5ce25306e6405f7072059128",
+            "5ce25320e6405f707205912f"
+          ],
+          "type": "array"
+        }
+      }
+    },
+    "UserDeleteRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "User Deleted Successfully."
+        }
+      }
+    },
+    "UserChangeStatusReq": {
+      "required": [
+        "userIds",
+        "status"
+      ],
+      "properties": {
+        "userIds": {
+          "example": [
+            "5ce25306e6405f7072059128",
+            "5ce25320e6405f707205912f"
+          ],
+          "type": "array"
+        },
+        "status": {
+          "example": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "UserChangeStatusRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Status update successfully."
+        }
+      }
+    },
+    "GetUserDetailsRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "_id": "63b2c950a0da01914a83b197",
+            "firstname": "Malhar",
+            "lastname": "Trivedi",
+            "emailId": "malhartrivedi@grr.la",
+            "emailVerificationStatus": false,
+            "status": false,
+            "dateofbirth": "2000-01-20T00:00:00.000Z",
+            "createdAt": "2023-01-02T12:08:48.409Z"
+          }
+        }
+      }
+    },
+    "GetUserDownloadDetailsRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "filePathAndName": "user-excel-1676710213373.xlsx"
+          }
+        }
+      }
+    }
+  }
+}

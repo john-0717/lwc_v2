@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Master Data</title>
+</head>
+
+<body>
+    <h1>Master Data List</h1>
+    <ul>
+        {{#each lists}}
+        {{#if firstName includeZero=true}}
+        <li>First Name: {{firstName}}</li>
+        {{/if}}
+        {{#if lastName includeZero=true}}
+        <li>last Name: {{lastName}}</li>
+        {{/if}}
+        {{#if email includeZero=true}}
+        <li>Email: {{email}}</li>
+        {{/if}}
+        {{#if phone includeZero=true}}
+        <li>Phone: {{phone}}</li>
+        {{/if}}
+        {{#if addressLine includeZero=true}}
+        <li>Address Line: {{addressLine}}</li>
+        {{/if}}
+        {{#if addressCity includeZero=true}}
+        <li>Address City: {{addressCity}}</li>
+        {{/if}}
+        {{#if availability includeZero=true}}
+        <li>Availability: {{availability}}</li>
+        {{/if}}
+        {{#if profileUrl includeZero=true}}
+        <li>Photo: {{profileUrl}}</li>
+        {{/if}}
+        {{#if status includeZero=true}}
+        <li>Status: {{status}}</li>
+        {{/if}}
+
+        <br />
+        {{/each}}
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Master Data</title>
+  </head>
+  <body>
+    <h1>Master Data List</h1>
+    <ul>
+      {{#each lists}}
+      {{#if name includeZero=true}}
+      <li>Name: {{name}}</li>
+      {{/if}}
+      {{#if levelName includeZero=true}}
+      <li>Level Name: {{levelName}}</li>
+      {{/if}}
+      {{#if codeTitle includeZero=true}}
+      <li>Code Title: {{codeTitle}}</li>
+      {{/if}}
+      {{#if jobTitle includeZero=true}}
+      <li>Job Title: {{jobTitle}}</li>
+      {{/if}}
+      {{#if jobType includeZero=true}}
+      <li>Job Type: {{jobType}}</li>
+      {{/if}}
+      {{#if event includeZero=true}}
+      <li>Title: {{event}}</li>
+      {{/if}}
+      {{#if log includeZero=true}}
+      <li>Description: {{log}}</li>
+      {{/if}}      
+      {{#if skills includeZero=true}}
+      <li>Skills: {{skills}}</li>
+      {{/if}}
+      {{#if skillLevel includeZero=true}}
+      <li>Skill Level: {{skillLevel}}</li>
+      {{/if}}
+      {{#if roleDescription includeZero=true}}
+      <li>Role Description: {{roleDescription}}</li>
+      {{/if}}
+      {{#if experience includeZero=true}}
+      <li>Experience: {{experience}}</li>
+      {{/if}}
+      {{#if qualification includeZero=true}}
+      <li>qualification: {{qualification}}</li>
+      {{/if}}
+      {{#if registration includeZero=true}}
+      <li>Registration: {{registration}}</li>
+      {{/if}}
+      {{#if from includeZero=true}}
+      <li>From: {{from}}</li>
+      {{/if}}
+      {{#if to includeZero=true}}
+      <li>To: {{to}}</li>
+      {{/if}}
+      {{#if companyName includeZero=true}}
+      <li>Company Name: {{companyName}}</li>
+      {{/if}}
+      {{#if firstName includeZero=true}}
+      <li>First Name: {{firstName}}</li>
+      {{/if}}
+      {{#if lastName includeZero=true}}
+      <li>Last Name: {{lastName}}</li>
+      {{/if}}
+      {{#if email includeZero=true}}
+      <li>Email: {{email}}</li>
+      {{/if}}
+      {{#if immigrationStatus includeZero=true}}
+      <li>Immigration Status: {{immigrationStatus}}</li>
+      {{/if}}
+      {{#if numOfAppliedJobs includeZero=true}}
+      <li>Num Of Applied Jobs: {{numOfAppliedJobs}}</li>
+      {{/if}}
+      {{#if numOfJobsPosted includeZero=true}}
+      <li>Number of Jobs Posted: {{numOfJobsPosted}}</li>
+      {{/if}}
+      {{#if contactPersonFullName includeZero=true}}
+      <li>Contact Person: {{contactPersonFullName}}</li>
+      {{/if}}
+      {{#if noOfApplicationReceived includeZero=true}}
+      <li>Number of Application Received: {{noOfApplicationReceived:}}</li>
+      {{/if}}
+      {{#if phone includeZero=true}}
+      <li>Phone: {{phone}}</li>
+      {{/if}}      
+      {{#if status includeZero=true}}
+      <li>Status: {{status}}</li>
+      {{/if}}
+      {{#if createdBy includeZero=true}}
+      <li>createdBy: {{createdBy}}</li>
+      {{/if}}
+      {{#if modifiedBy includeZero=true}}
+      <li>modifiedBy: {{createdBy}}</li>
+      {{/if}}
+      {{#if createdAt includeZero=true}}
+      <li>createdAt: {{createdAt}}</li>
+      {{/if}}
+      {{#if updatedAt includeZero=true}}
+      <li>updatedAt: {{createdBy}}</li>
+      {{/if}}
+      <br />
+      {{/each}}
+    </ul>
+  </body>
+</html>

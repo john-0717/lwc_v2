@@ -1,0 +1,46 @@
+{
+    "settings": {
+        "__v": 0,
+        "updatedAt": 0,
+        "createdAt": 0,
+        "isDeleted": 0
+    },
+    "siteSetting": {
+        "siteSetting": 1
+    },
+    "metaData": {
+        "metaData": 1
+    },
+    "dateTimeSettings": {
+        "dateTimeSettings": 1,
+        "is2FA": 1
+    },
+    "siteUnMaintainance": {
+        "siteUnMaintenance": 1
+    },
+    "socialMediaSDK": {
+        "socialMediaSDK": 1
+    },
+    "socialMediaLink": {
+        "socialMediaLink": 1
+    },
+    "smtpSettings": {
+        "smtpSettings": 1
+    },
+    "analyticalData": {
+        "analyticalData": 1
+    },
+    "smsSettings": {
+        "smsSettings": 1
+    },
+    "globalSettings": {
+        "currency": 0,
+        "dateFormatSettings": 0,
+        "createdAt": 0,
+        "updatedAt": 0,
+        "__v": 0
+    },
+    "emailSettings": {
+        "__v": 0
+    }
+}

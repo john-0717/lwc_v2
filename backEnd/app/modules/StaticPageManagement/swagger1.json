@@ -1,0 +1,584 @@
+{
+  "paths": {
+    "/static-page": {
+      "post": {
+        "tags": [
+          "Static Page Management"
+        ],
+        "description": "Static Page Add/Edit (use staticPageId only for Edit Static Page )",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Static Page Add/Edit",
+            "schema": {
+              "$ref": "#/definitions/StaticPageAddEditReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Static Page Add/Edit Response",
+            "schema": {
+              "$ref": "#/definitions/StaticPageAddEditRes"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Static Page Management"
+        ],
+        "description": "Static Page Change Status",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Static Page Change Status",
+            "schema": {
+              "$ref": "#/definitions/StaticPageChangeStatusReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Static Page Change Status Response",
+            "schema": {
+              "$ref": "#/definitions/StaticPageChangeStatusRes"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Static Page Management"
+        ],
+        "description": "Static Page Delete",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Static Page Delete",
+            "schema": {
+              "$ref": "#/definitions/StaticPageDeleteReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Static Page Delete Response",
+            "schema": {
+              "$ref": "#/definitions/StaticPageDeleteRes"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Static Page Management"
+        ],
+        "description": "Get Static Page details",
+        "parameters": [
+          {
+            "name": "languageId",
+            "in": "query",
+            "description": "languageId",
+            "required": true
+          },
+          {
+            "name": "staticCode",
+            "in": "query",
+            "description": "staticCode",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "StaticPage  details are.",
+            "schema": {
+              "$ref": "#/definitions/GetStaticPageDetailsRes"
+            }
+          }
+        }
+      }
+    },
+    "/static-page/listing": {
+      "post": {
+        "tags": [
+          "Static Page Management"
+        ],
+        "description": "Static Page Listing",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Static Page Listing",
+            "schema": {
+              "$ref": "#/definitions/StaticPageListingReq"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "security": {
+          "basicAuth": []
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Static Page details are.",
+            "schema": {
+              "$ref": "#/definitions/StaticPageListingRes"
+            }
+          }
+        }
+      }
+    },
+    "/static-page/download/{type}": {
+      "get": {
+        "tags": [
+          "Static Page Management"
+        ],
+        "description": "Download Static Page Details type:'excel/csv'",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "type",
+            "required": true
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "deviceid",
+            "in": "header",
+            "description": "deviceid of device android, ios or web",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "header",
+            "description": "enter languageCode else default code is 'en'",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Static Page details are.",
+            "schema": {
+              "$ref": "#/definitions/GetStaticPageDownloadDetailsRes"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "StaticPageAddEditReq": {
+      "required": [
+        "staticPageId",
+        "languageId",
+        "title",
+        "slug",
+        "metaKeywords",
+        "metaDescription",
+        "content",
+        "staticCode"
+      ],
+      "properties": {
+        "staticPageId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "languageId": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        },
+        "title": {
+          "type": "string",
+          "example": "test",
+          "uniqueItems": true,
+          "required": true
+        },
+        "slug": {
+          "type": "string",
+          "example": "test",
+          "uniqueItems": true,
+          "required": true
+        },
+        "metaDescription": {
+          "type": "string",
+          "example": "test",
+          "uniqueItems": true,
+          "required": true
+        },
+        "metaKeywords": {
+          "type": "string",
+          "example": "test",
+          "uniqueItems": true,
+          "required": true
+        },
+        "content": {
+          "type": "string",
+          "example": "2023-01-03T11:55:45.629Z",
+          "uniqueItems": true,
+          "required": true
+        },
+        "staticCode": {
+          "type": "string",
+          "example": "",
+          "uniqueItems": true,
+          "required": true
+        }
+      }
+    },
+    "StaticPageAddEditRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "StaticPage Added Successfully."
+        }
+      }
+    },
+    "StaticPageListingReq": {
+      "required": [
+        "page",
+        "pagesize",
+        "languageId"
+      ],
+      "properties": {
+        "languageId": {
+          "type": "string",
+          "example": "",
+          "required": true
+        },
+        "page": {
+          "type": "number",
+          "example": "1",
+          "required": true
+        },
+        "pagesize": {
+          "type": "number",
+          "example": "10",
+          "required": true
+        },
+        "searchText": {
+          "type": "string",
+          "example": "",
+          "required": true
+        }
+      }
+    },
+    "StaticPageListingRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "page": {
+          "type": "number",
+          "example": "1"
+        },
+        "perPage": {
+          "type": "number",
+          "example": "10"
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "listing": [
+              {
+                "_id": "63b6d395738d8cd93100add8",
+                "languageId": "638f115f32ea140479188335",
+                "title": "test",
+                "slug": "test",
+                "metaKeywords": "test",
+                "category": {
+                  "_id": "63b5850c7f630e16e6c211d8",
+                  "category": "test"
+                },
+                "content": "2023-01-03T11:55:45.629Z",
+                "postDateTime": "2023-01-03T11:55:45.629Z",
+                "addedBy": "63a1621355ad54f5f2cf1601",
+                "status": true
+              }
+            ]
+          }
+        },
+        "total": {
+          "type": "number",
+          "example": "1"
+        }
+      }
+    },
+    "StaticPageDeleteReq": {
+      "required": [
+        "staticPageIds"
+      ],
+      "properties": {
+        "staticPageIds": {
+          "example": [
+            "5ce25306e6405f7072059128",
+            "5ce25320e6405f707205912f"
+          ],
+          "type": "array"
+        }
+      }
+    },
+    "StaticPageDeleteRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Static Page Deleted Successfully."
+        }
+      }
+    },
+    "StaticPageChangeStatusReq": {
+      "required": [
+        "staticPagesIds",
+        "status"
+      ],
+      "properties": {
+        "staticPagesIds": {
+          "example": [
+            "5ce25306e6405f7072059128",
+            "5ce25320e6405f707205912f"
+          ],
+          "type": "array"
+        },
+        "status": {
+          "example": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "StaticPageChangeStatusRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Status update successfully."
+        }
+      }
+    },
+    "GetStaticPageDetailsRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "_id": "642416a2d740b7527947d7c3",
+            "languageId": "638f115f32ea140479188335",
+            "title": "About Us",
+            "slug": "about-us",
+            "metaKeywords": "about us",
+            "metaDescription": "Sed et et stet lorem sadipscing duo, aliquyam erat gubergren dolor et, eirmod clita et et duo ut, tempor takimata.",
+            "staticCode": "pd78l1",
+            "content": "<h2>About Us</h2><p>Consetetur tempor no erat gubergren justo sed sadipscing amet magna. Sadipscing amet labore accusam kasd ea. Dolores ut sanctus vero dolor dolore kasd sadipscing dolor. Diam erat dolor sadipscing lorem est magna nonumy ipsum lorem, magna ea magna ipsum sanctus ut dolor, gubergren sea et ipsum lorem lorem at justo et elitr. Sit sed sed sit lorem elitr labore vero. Sit labore no et erat vero ut ut elitr, ut tempor sadipscing dolor sed ea dolor sed. Clita takimata lorem lorem dolor. Ut sadipscing nonumy sea erat labore dolore vero magna. Eirmod clita stet ipsum et ea, aliquyam et takimata et gubergren. Rebum diam et tempor sanctus et sit at, eos dolore no dolore et et sit at est. Sadipscing consetetur sit duo ipsum, voluptua voluptua ea at invidunt sadipscing accusam ipsum magna. Voluptua duo nonumy dolor ut clita at ea eirmod. Ut accusam sea lorem dolores no sed sit, amet ipsum magna dolor takimata amet amet at et, ipsum justo sed sea diam voluptua clita justo ipsum. Nonumy dolor sea lorem takimata amet dolor sit accusam amet. Eos ut elitr invidunt dolor tempor diam eos justo takimata, gubergren eirmod eirmod consetetur aliquyam kasd lorem takimata, takimata nonumy et sea erat stet dolor ipsum, ea sit ipsum sed et at. Diam takimata eirmod sea magna magna vero ut ipsum dolor. Accusam sed sea et sea amet elitr justo. Nonumy lorem consetetur accusam sadipscing justo, amet no elitr tempor lorem lorem invidunt, eirmod eos et no lorem, accusam gubergren labore et sadipscing ipsum. Duo et no et aliquyam ea magna consetetur. Dolores erat ipsum clita accusam accusam gubergren aliquyam magna consetetur, clita erat sed elitr invidunt kasd est gubergren amet. Erat tempor at invidunt diam, sanctus ipsum duo eirmod tempor aliquyam, sadipscing dolores rebum et dolor voluptua est kasd elitr gubergren, sit lorem est lorem kasd erat eos nonumy et, no amet sanctus at invidunt amet justo invidunt clita, ea justo amet voluptua est dolor. Gubergren accusam et magna labore dolore nonumy, diam dolore sed et labore kasd accusam lorem. Eos tempor aliquyam at dolores labore. Invidunt clita tempor voluptua stet magna vero. Erat et sed sit voluptua. Amet diam duo dolore sed et, consetetur dolor consetetur ipsum takimata ut, stet dolores kasd diam lorem accusam sed tempor gubergren. Justo sed takimata sed justo invidunt. Ipsum sed consetetur justo dolor, dolor amet eos ut no et magna invidunt takimata sit, ut stet no lorem duo sadipscing vero sadipscing lorem. Invidunt sanctus clita duo voluptua magna amet at gubergren. Voluptua sed stet dolor kasd sanctus sed, dolore est sit et labore tempor gubergren eirmod. Magna duo eirmod amet eirmod ipsum. Invidunt clita vero sit justo sea accusam diam dolor. Sea at at ipsum amet sit, erat accusam et sadipscing magna, lorem takimata accusam sit vero clita est, ut nonumy invidunt dolore vero labore at et dolores, dolores ea et gubergren tempor, tempor lorem dolore gubergren magna vero ipsum consetetur, ipsum eirmod invidunt sit sit at et dolore eos. Est eos ut et.</p>",
+            "status": true,
+            "createdAt": "2023-03-29T10:44:50.505Z",
+            "updatedAt": "2023-03-29T10:44:50.505Z"
+          }
+        }
+      }
+    },
+    "GetStaticPageDownloadDetailsRes": {
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": "200"
+        },
+        "message": {
+          "type": "string",
+          "example": "Get details successfully."
+        },
+        "data": {
+          "type": "object",
+          "example": {
+            "filePathAndName": "static-page-excel-1676710213373.xlsx"
+          }
+        }
+      }
+    }
+  }
+}
